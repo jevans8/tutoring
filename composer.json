@@ -1,0 +1,24 @@
+{
+
+  "name": "Final Project - Tutoring Attendance Log",
+
+  "authors": [
+    {
+      "name": "Julia Evans",
+      "email": "jevans8@mail.greenriver.edu"
+    },
+    {
+      "name": "Elric Barkey",
+      "email": "ebarkey2@mail.greenriver.edu"
+    },
+    {
+      "name": "Zachary Frehner",
+      "email": "zfrehner@mail.greenriver.edu"
+    }
+  ],
+
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+
+}
