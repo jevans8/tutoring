@@ -16,10 +16,41 @@ $f3 = Base::instance(); //Class::method()
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Default route
-$f3->route('GET /', function(){
+$f3->route('GET|POST /', function($f3) {
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $f3->reroute('search');
+    }
 
     $view = new Template();
     echo $view->render('views/home.html');
+
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Student search route
+$f3->route('GET /search', function(){
+
+    $view = new Template();
+    echo $view->render('views/search.html');
+
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//New student route
+$f3->route('GET /newStudent', function(){
+
+    $view = new Template();
+    echo $view->render('views/newStudent.html');
+
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//View student route
+$f3->route('GET /viewStudent', function(){
+
+    $view = new Template();
+    echo $view->render('views/viewStudent.html');
 
 });
 
