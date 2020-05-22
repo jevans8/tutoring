@@ -18,9 +18,8 @@ $f3 = Base::instance(); //Class::method()
 //Default route
 $f3->route('GET /', function(){
 
-    echo '<h1>Test</h1>';
-    //$view = new Template();
-    //echo $view->render('views/home.html');
+    $view = new Template();
+    echo $view->render('views/home.html');
 
 });
 
