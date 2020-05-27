@@ -52,7 +52,7 @@
 
                         <div class="form-group">
                             <label for="date">Date</label>
-                            <input type="text" class="form-control" id="date" aria-describedby="date" placeholder="">
+                            <input type="text" class="form-control" id="date" name="date" aria-describedby="date" placeholder="MM/DD/YYYY">
                         </div>
 
                     </div>
@@ -64,7 +64,7 @@
 
                         <div class="form-group">
                             <label for="timein">Time In</label>
-                            <input type="text" class="form-control" id="timein" aria-describedby="time in" placeholder="">
+                            <input type="time" class="form-control" id="timein" aria-describedby="time in" placeholder="">
                         </div>
 
                     </div>
@@ -72,7 +72,7 @@
 
                         <div class="form-group">
                             <label for="timeout">Time Out</label>
-                            <input type="text" class="form-control" id="timeout" aria-describedby="time out" placeholder="">
+                            <input type="time" class="form-control" id="timeout" aria-describedby="time out" placeholder="">
                         </div>
 
                     </div>
@@ -124,7 +124,36 @@
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <br>
-                <a href="">View Attendance History</a>
+
+                <!-- Modal link -->
+                <a href="" data-toggle="modal" data-target=".bd-example-modal-lg">View Attendance History</a>
+
+                <!-- Modal -->
+<!--                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>-->
+
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="attendance history" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="attendanceHistory">Attendance History</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--                                <button type="button" class="btn btn-primary">Save changes</button>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
 
             </form>
 
