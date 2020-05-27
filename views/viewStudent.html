@@ -24,21 +24,21 @@
 
                 <div class="form-group">
                     <label for="fname">First Name</label>
-                    <input type="text" class="form-control" id="fname" aria-describedby="first name" placeholder="" readonly>
+                    <input type="text" class="form-control" id="fname" aria-describedby="first name" placeholder="" value="Jane" readonly>
                 </div>
                 <div class="form-group">
                     <label for="lname">Last Name</label>
-                    <input type="text" class="form-control" id="lname" aria-describedby="last name" placeholder="" readonly>
+                    <input type="text" class="form-control" id="lname" aria-describedby="last name" placeholder="" value="Doe" readonly>
                 </div>
                 <div class="form-group">
                     <label for="sid">Student Identification (SID) Number</label>
-                    <input type="text" class="form-control" id="sid" aria-describedby="student id number" placeholder="" readonly>
+                    <input type="text" class="form-control" id="sid" aria-describedby="student id number" placeholder="" value="987654321" readonly>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="" readonly>
+                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="" value="janedoe@mail.greenriver.edu" readonly>
                 </div>
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary btn-block">Edit</button>
             </form>
 
         </div>
@@ -126,15 +126,13 @@
 
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
                 <br>
 
                 <!-- Modal link -->
                 <a href="" data-toggle="modal" data-target=".bd-example-modal-lg">View Attendance History</a>
 
-                <!-- Modal -->
-<!--                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>-->
-
+                <!-- Modal popup -->
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="attendance history" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -150,14 +148,11 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<!--                                <button type="button" class="btn btn-primary">Save changes</button>-->
                             </div>
 
                         </div>
                     </div>
                 </div>
-
-
 
             </form>
 
