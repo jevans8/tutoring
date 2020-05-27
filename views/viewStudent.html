@@ -7,12 +7,17 @@
 <body>
 
 <div class="container">
+
+    <h1 class="m-5">View Student</h1>
+
     <div class="row justify-content-center">
         <div class="col-6">
 
-            <h1 class="m-5">View Student</h1>
-
             <form method="post" action="" class="bg-light p-5 mb-3">
+
+                <h3>Profile</h3>
+                <hr>
+
                 <div class="form-group">
                     <label for="fname">First Name</label>
                     <input type="text" class="form-control" id="fname" aria-describedby="first name" placeholder="" readonly>
@@ -32,8 +37,97 @@
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>
 
-            <a href="" class="btn btn-primary btn-block" role="button">Add Attendance</a>
-            <a href="" class="btn btn-primary btn-block" role="button">View Attendance Log</a>
+        </div>
+
+        <div class="col-6">
+
+            <form method="post" action="" class="bg-light p-5 mb-3">
+
+                <h3>Add Attendance</h3>
+                <hr>
+
+                <!-- Date -->
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="text" class="form-control" id="date" aria-describedby="date" placeholder="">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Time in/out -->
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="timein">Time In</label>
+                            <input type="text" class="form-control" id="timein" aria-describedby="time in" placeholder="">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="timeout">Time Out</label>
+                            <input type="text" class="form-control" id="timeout" aria-describedby="time out" placeholder="">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Course/Instructor -->
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="course">Course</label>
+                            <select class="custom-select" id="course">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="instructor">Instructor</label>
+                            <select class="custom-select" id="instructor">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+                            <textarea class="form-control" id="notes" rows="3"></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <br>
+                <a href="">View Attendance History</a>
+
+            </form>
+
 
         </div>
 
