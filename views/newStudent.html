@@ -16,23 +16,45 @@
 
             <h1 class="m-5">Add New Student</h1>
 
-            <form method="post" action="" class="bg-light p-5">
+            <!-- New student form -->
+            <form method="post" action="#" class="bg-light p-5" novalidate>
+
+                <!-- First name -->
                 <div class="form-group">
                     <label for="fname">First Name</label>
-                    <input type="text" class="form-control" id="fname" aria-describedby="first name" placeholder="">
+                    <input type="text" class="form-control" id="fname" name="fname" aria-describedby="first name" placeholder="" value="{{ @fname }}">
+                    <check if="isset(@errors['fname'])">
+                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['fname'] }}</div>
+                    </check>
                 </div>
+
+                <!-- Last name -->
                 <div class="form-group">
                     <label for="lname">Last Name</label>
-                    <input type="text" class="form-control" id="lname" aria-describedby="last name" placeholder="">
+                    <input type="text" class="form-control" id="lname" name="lname" aria-describedby="last name" placeholder="" value="{{ @lname }}">
+                    <check if="isset(@errors['lname'])">
+                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['lname'] }}</div>
+                    </check>
                 </div>
+
+                <!-- SID -->
                 <div class="form-group">
                     <label for="sid">Student Identification (SID) Number</label>
-                    <input type="text" class="form-control" id="sid" aria-describedby="student id number" placeholder="">
+                    <input type="text" class="form-control" id="sid" name="sid" aria-describedby="student id number" placeholder="" value="{{ @sid }}">
+                    <check if="isset(@errors['sid'])">
+                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['sid'] }}</div>
+                    </check>
                 </div>
+
+                <!-- Email -->
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="">
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="" value="{{ @email }}">
+                    <check if="isset(@errors['email'])">
+                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['email'] }}</div>
+                    </check>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
