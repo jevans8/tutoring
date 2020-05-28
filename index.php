@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+require_once('model/validate.php'); //why is this necessary if it's in composer?????
 
 //Start a session (AFTER the autoload)
 //session_start();
@@ -14,6 +15,7 @@ require_once('vendor/autoload.php');
 //Instantiate the framework (Base class)
 $f3 = Base::instance(); //Class::method()
 $controller = new Controller($f3); //controller object
+$validator = new Validate(); //validation object
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Default route

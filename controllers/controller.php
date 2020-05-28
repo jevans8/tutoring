@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Controller class
+ * Class Controller
  */
 class Controller
 {
@@ -51,12 +51,14 @@ class Controller
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
+            global $validator;
+
             //validate first name
             if(empty($_POST['fname']))
             {
                 $this->_f3->set('errors["fname"]', "Required field");
             }
-            else if(!validName($_POST['fname']))
+            else if(!$validator->validName($_POST['fname']))
             {
                 $this->_f3->set('errors["fname"]', "Please enter a valid name");
             }
@@ -66,7 +68,7 @@ class Controller
             {
                 $this->_f3->set('errors["lname"]', "Required field");
             }
-            else if(!validName($_POST['lname']))
+            else if(!$validator->validName($_POST['lname']))
             {
                 $this->_f3->set('errors["lname"]', "Please enter a valid name");
             }
@@ -76,7 +78,7 @@ class Controller
             {
                 $this->_f3->set('errors["sid"]', "Required field");
             }
-            else if(!validSid($_POST['sid']))
+            else if(!$validator->validSid($_POST['sid']))
             {
                 $this->_f3->set('errors["sid"]', "Please enter a valid SID");
             }
@@ -86,7 +88,7 @@ class Controller
             {
                 $this->_f3->set('errors["email"]', "Required field");
             }
-            else if(!validEmail($_POST['email']))
+            else if(!$validator->validEmail($_POST['email']))
             {
                 $this->_f3->set('errors["email"]', "Please enter a valid email address");
             }
