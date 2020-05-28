@@ -19,9 +19,9 @@ class Controller
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * Process default route (home page)
+     * Process default route (login page)
      */
-    public function home()
+    public function login()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
