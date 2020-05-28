@@ -11,7 +11,7 @@ class Student
     /**
      * Default constructor
      * @param $fname student first name
-     * * @param $lname student last name
+     * @param $lname student last name
      * @param $sid student id
      * @param $email student email
      */
