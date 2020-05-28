@@ -1,0 +1,69 @@
+-- Drop existing tables
+--
+-- DROP TABLE IF EXISTS course;
+-- DROP TABLE IF EXISTS  student;
+-- DROP TABLE IF EXISTS  instructor;
+-- DROP TABLE IF EXISTS  tutor;
+-- DROP TABLE IF EXISTS  attendance;
+
+--adding tables to sql DB
+
+CREATE TABLE IF NOT EXISTS `course` (
+    `course_id` char(10) NOT NULL,
+    `instructor_id` char(10) NOT NULL,
+    `title` varchar(30) NOT NULL,
+    PRIMARY KEY (`course_id`));
+
+CREATE TABLE IF NOT EXISTS `student` (
+    `student_id` char(10) NOT NULL,
+    `first_name` varchar(30) NOT NULL,
+    `last_name` varchar(30) NOT NULL,
+    `email` varchar(30) NOT NULL,
+    PRIMARY KEY (`student_id`));
+
+CREATE TABLE IF NOT EXISTS `instructor` (
+    `instructor_id` char(10) NOT NULL,
+    `first_name` varchar(30) NOT NULL,
+    `last_name` varchar(30) NOT NULL,
+    `course_id` char(10) NOT NULL,
+    PRIMARY KEY (`instructor_id`));
+
+CREATE TABLE IF NOT EXISTS `tutor` (
+    `tutor_id` char(10) NOT NULL,
+    `first_name` varchar(30) NOT NULL,
+    `last_name` varchar(30) NOT NULL,
+    `course_id` char(10) NOT NULL,
+    `password` varchar(30) NOT NULL,
+    `is_tutor` TINYINT(1) NOT NULL,
+    PRIMARY KEY (`tutor_id`));
+
+CREATE TABLE IF NOT EXISTS `attendance` (
+    `instructor_id` char(10) NOT NULL,
+    `date` date NOT NULL,
+    `time_in` datetime NOT NULL,
+    `time_out` datetime NOT NULL,
+    `course_title` char(10) NOT NULL,
+    `instructor_name` varchar(30),
+    `notes` text,
+    PRIMARY KEY (`instructor_id`));
+
+--adding a new student
+INSERT INTO student (`student_id`, `first_name`, `last_name`, `email`)
+    VALUES ("123456789", "Zach", "Frehner", "zfrehner@mail.greenriver.edu");
+
+--adding attendance
+INSERT INTO attendance (`instructor_id`, `date`, `time_in`, `time_out`, `course_title`, `instructor_name`, `notes`)
+    VALUES ('1','2020-05-28', '2020-05-28 16:08:12', '2020-05-28 16:25:12', 'IT 328', "T. Ostrander", "great class");
+
+--view attendance
+SELECT * FROM attendance;
+
+--edit student
+UPDATE student
+SET
+    email = 'mary.patterson@greenriver.com'
+WHERE
+    student_id = 1111111;
+
+--view student
+SELECT * FROM student WHERE student_id = 1111111;
