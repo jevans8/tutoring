@@ -2,21 +2,26 @@
 
 class Student
 {
-    private $_name;
+    private $_fname;
+    private $_lname;
     private $_sid;
     private $_email;
+    private $_isTutor;
 
     /**
      * Default constructor
-     * @param $name student name
+     * @param $fname student first name
+     * * @param $lname student last name
      * @param $sid student id
      * @param $email student email
      */
-    public function __construct($name, $sid, $email)
+    public function __construct($fname, $lname, $sid, $email, $isTutor)
     {
-        $this->_name = $name; //OR $this->setName($name);
+        $this->_fname = $fname; //OR $this->setFName($name);
+        $this->_lname = $lname;
         $this->_sid = $sid;
         $this->_email = $email;
+        $this->_isTutor = $isTutor;
     }
 
     /**
@@ -25,26 +30,43 @@ class Student
      */
     public function toString()
     {
-        $out = $this->_name . " - ";
-        $out .= $this->_sid . " - ";
-        $out .= $this->_email . " - ";
-        return $out;
+        $output = $this->_fname . " ";
+        $output .= $this->_lname . " - ";
+        $output .= $this->_sid . " - ";
+        $output .= $this->_email;
+        return $output;
     }
 
     /**
-     * @return string student name
+     * @return string student first name
      */
-    public function getName()
+    public function getFName()
     {
-        return $this->_name;
+        return $this->_fname;
     }
 
     /**
-     * @param string $name student name
+     * @param string $name student first name
      */
-    public function setName($name)
+    public function setFName($name)
     {
-        $this->_name = $name;
+        $this->_fname = $name;
+    }
+
+    /**
+     * @return string student last name
+     */
+    public function getLName()
+    {
+        return $this->_lname;
+    }
+
+    /**
+     * @param string $name student last name
+     */
+    public function setLName($name)
+    {
+        $this->_lname = $name;
     }
 
     /**
@@ -77,6 +99,14 @@ class Student
     public function setEmail($email)
     {
         $this->_email = $email;
+    }
+
+    /**
+     * @return bool are they a tutor?
+     */
+    public function isTutor()
+    {
+        return $this->_isTutor;
     }
 
 }
