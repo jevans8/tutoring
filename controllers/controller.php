@@ -29,7 +29,7 @@ class Controller
         }
 
         $view = new Template();
-        echo $view->render('views/home.html');
+        echo $view->render('views/login.html');
 
     }
 
