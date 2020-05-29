@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 //Require the autoload file
 require_once('vendor/autoload.php');
 require_once('model/validate.php'); //why is this necessary if it's in composer?????
+require_once('model/database.php'); //why is this necessary if it's in composer?????
 
 //Start a session (AFTER the autoload)
 //session_start();
