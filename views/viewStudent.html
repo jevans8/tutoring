@@ -56,7 +56,10 @@
 
                         <div class="form-group">
                             <label for="date">Date</label>
-                            <input type="text" class="form-control" id="date" name="date" aria-describedby="date" placeholder="MM/DD/YYYY">
+                            <input type="text" class="form-control" id="date" name="date" aria-describedby="date" placeholder="MM/DD/YYYY" value="{{ @date }}">
+                            <check if="isset(@errors['date'])">
+                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['date'] }}</div>
+                            </check>
                         </div>
 
                     </div>
@@ -66,17 +69,25 @@
                 <div class="row">
                     <div class="col-md-6">
 
+                        <!-- Time in -->
                         <div class="form-group">
                             <label for="timein">Time In</label>
-                            <input type="time" class="form-control" id="timein" aria-describedby="time in" placeholder="">
+                            <input type="time" class="form-control" id="timein" name="timein" aria-describedby="time in" placeholder="" value="{{ @timein }}">
+                            <check if="isset(@errors['timein'])">
+                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['timein'] }}</div>
+                            </check>
                         </div>
 
                     </div>
                     <div class="col-md-6">
 
+                        <!-- Time out -->
                         <div class="form-group">
                             <label for="timeout">Time Out</label>
-                            <input type="time" class="form-control" id="timeout" aria-describedby="time out" placeholder="">
+                            <input type="time" class="form-control" id="timeout" name="timeout" aria-describedby="time out" placeholder="" value="{{ @timeout }}">
+                            <check if="isset(@errors['timeout'])">
+                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['timeout'] }}</div>
+                            </check>
                         </div>
 
                     </div>
@@ -86,27 +97,65 @@
                 <div class="row">
                     <div class="col-md-6">
 
+                        <!-- Courses -->
                         <div class="form-group">
                             <label for="course">Course</label>
-                            <select class="custom-select" id="course">
-                                <option selected></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="custom-select" id="course" name="course">
+
+                                <check if="isset({{ @selectedCourse }})">
+                                    <true>
+                                        <option></option>
+                                        <repeat group="{{ @courses }}" value="{{ @course }}">
+                                            <option value="{{ @course }}" <check if="{{ @selectedCourse == @course }}">selected</check>>{{ strtoupper(@course) }}</option>
+                                        </repeat>
+                                    </true>
+                                    <false>
+                                        <option selected></option>
+                                        <repeat group="{{ @courses }}" value="{{ @course }}">
+                                            <option value="{{ @course }}" <check if="{{ @selectedCourse == @course }}">selected</check>>{{ strtoupper(@course) }}</option>
+                                        </repeat>
+                                    </false>
+                                </check>
+
                             </select>
+
+                            <!-- Error msg -->
+                            <check if="isset(@errors['course'])">
+                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['course'] }}</div>
+                            </check>
+
                         </div>
 
                     </div>
                     <div class="col-md-6">
 
+                        <!-- Instructors -->
                         <div class="form-group">
                             <label for="instructor">Instructor</label>
-                            <select class="custom-select" id="instructor">
-                                <option selected></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="custom-select" id="instructor" name="instructor">
+
+                                <check if="isset({{ @selectedInstructor }})">
+                                    <true>
+                                        <option></option>
+                                        <repeat group="{{ @instructors }}" value="{{ @instructor }}">
+                                            <option value="{{ @instructor }}" <check if="{{ @selectedInstructor == @instructor }}">selected</check>>{{ ucfirst(@instructor) }}</option>
+                                        </repeat>
+                                    </true>
+                                    <false>
+                                        <option selected></option>
+                                        <repeat group="{{ @instructors }}" value="{{ @instructor }}">
+                                            <option value="{{ @instructor }}" <check if="{{ @selectedInstructor == @instructor }}">selected</check>>{{ ucfirst(@instructor) }}</option>
+                                        </repeat>
+                                    </false>
+                                </check>
+
                             </select>
+
+                            <!-- Error msg -->
+                            <check if="isset(@errors['instructor'])">
+                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['instructor'] }}</div>
+                            </check>
+
                         </div>
 
                     </div>
@@ -119,13 +168,24 @@
 
                         <div class="form-group">
                             <label for="notes">Notes</label>
-                            <textarea class="form-control" id="notes" rows="3"></textarea>
+                            <textarea class="form-control" id="notes" name="notes" rows="3">{{ @notes }}</textarea>
                         </div>
 
                     </div>
 
                 </div>
 
+                <!-- Success message -->
+                <check if="isset(@errors['none'])">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ @errors['none'] }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </check>
+
+                <!-- Save button -->
                 <button type="submit" class="btn btn-primary btn-block">Save</button>
                 <br>
 
