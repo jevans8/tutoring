@@ -42,6 +42,72 @@ class Validate
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// NOT DONE
+    /**
+     * Return a value indicating if date is valid
+     * @param $date
+     * @return bool
+     */
+    function validDate($date)
+    {
+        //return false;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// NOT DONE
+    /**
+     * Return a value indicating if time is valid
+     * @param $time
+     * @return bool
+     */
+    function validTime($time)
+    {
+        //return false;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Return a value indicating if course is valid
+     * @param $course
+     * @return bool
+     */
+    function validCourse($course)
+    {
+        $validCourses = $this->getCourses();
+        return in_array($course, $validCourses);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PULL FROM DB!!!
+    /**
+     * Return an array of valid courses
+     * @return String[]
+     */
+    function getCourses()
+    {
+        return array("IT 328", "IT 334", "ENGL 335");
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Return a value indicating if instructor is valid
+     * @param $instructor
+     * @return bool
+     */
+    function validInstructor($instructor)
+    {
+        $validInstructors = $this->getInstructors();
+        return in_array($instructor, $validInstructors);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PULL FROM DB!!!!
+    /**
+     * Return an array of valid instructors
+     * @return String[]
+     */
+    function getInstructors()
+    {
+        return array("Tina Ostrander", "Ken Hang", "Josh Archer");
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

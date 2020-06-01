@@ -116,6 +116,75 @@ class Controller
      */
     public function viewStudent()
     {
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            global $validator;
+
+            //get courses
+            $courses = $validator->getCourses();
+            $this->_f3->set('courses', $courses);
+
+            //get instructors
+            $instructors = $validator->getInstructors();
+            $this->_f3->set('instructors', $instructors);
+
+            //validate date
+            if(empty($_POST['date']))
+            {
+                $this->_f3->set('errors["date"]', "Required field");
+            }
+//            else if(!$validator->validDate($_POST['date']))
+//            {
+//                $this->_f3->set('errors["date"]', "Please enter a valid date");
+//            }
+
+            //validate time in
+            if(empty($_POST['timein']))
+            {
+                $this->_f3->set('errors["timein"]', "Required field");
+            }
+
+            //validate time out
+            if(empty($_POST['timeout']))
+            {
+                $this->_f3->set('errors["timeout"]', "Required field");
+            }
+
+            //validate course
+            if(empty($_POST['course']))
+            {
+                $this->_f3->set('errors["course"]', "Required field");
+            }
+            else if(!$validator->validCourse($_POST['course']))
+            {
+                $this->_f3->set('errors["course"]', "Please select a valid course");
+            }
+
+            //validate instructor
+            if(empty($_POST['instructor']))
+            {
+                $this->_f3->set('errors["instructor"]', "Required field");
+            }
+            else if(!$validator->validInstructor($_POST['instructor']))
+            {
+                $this->_f3->set('errors["instructor"]', "Please select a valid instructor");
+            }
+
+            //if valid data
+            if(empty($this->_f3->get('errors')))
+            {
+                $this->_f3->set('errors["none"]', "Attendance has been successfully logged");
+            }
+
+            //store variables in f3 hive to make form sticky
+            $this->_f3->set('date', $_POST['date']);
+            $this->_f3->set('timein', $_POST['timein']);
+            $this->_f3->set('timeout', $_POST['timeout']);
+            $this->_f3->set('selectedCourse', $_POST['course']);
+            $this->_f3->set('selectedInstructor', $_POST['instructor']);
+            $this->_f3->set('notes', $_POST['notes']);
+        }
+
         $view = new Template();
         echo $view->render('views/viewStudent.html');
     }

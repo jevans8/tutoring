@@ -41,7 +41,7 @@ $f3->route('GET|POST /newStudent', function($f3)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //View student route
-$f3->route('GET /viewStudent', function()
+$f3->route('GET|POST /viewStudent', function()
 {
     $GLOBALS['controller']->viewStudent();
 });

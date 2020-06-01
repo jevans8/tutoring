@@ -4,8 +4,8 @@
 //$home = $_SERVER['home'];
 //require_once "/home/$user/config.php";
 
-//require_once "/home/jevansgr/config.php";
-require_once "/home/zfrehner/config.php";
+require_once "/home/jevansgr/config.php";
+//require_once "/home/zfrehner/config.php";
 //require_once "/home/ebarkeyg_grc/config.php";
 
 //connect to database with PDO
