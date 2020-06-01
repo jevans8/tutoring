@@ -17,12 +17,12 @@ CREATE TABLE IF NOT EXISTS `student` (
     `student_id` char(10) NOT NULL,
     `first_name` varchar(30) NOT NULL,
     `last_name` varchar(30) NOT NULL,
-    `email` varchar(30) NOT NULL,
+    `email` varchar(50) NOT NULL,
     `is_tutor` TINYINT(1) NOT NULL,
     PRIMARY KEY (`student_id`));
 
 CREATE TABLE IF NOT EXISTS `instructor` (
-    `instructor_email` varchar(30) NOT NULL,
+    `instructor_email` varchar(50) NOT NULL,
     `first_name` varchar(30) NOT NULL,
     `last_name` varchar(30) NOT NULL,
     `course_id` char(10) NOT NULL,
@@ -30,32 +30,62 @@ CREATE TABLE IF NOT EXISTS `instructor` (
 
 
 CREATE TABLE IF NOT EXISTS `attendance` (
-    `instructor_email` varchar(30) NOT NULL,
+    `instructor_email` varchar(50) NOT NULL,
+    `student_id` varchar(10) NOT NULL,
     `date` date NOT NULL,
-    `time_in` datetime NOT NULL,
+    `time_in` datetime NOT NULL, --instead of these being type date time we might need to make them a
+                                 --varchar because the user inputs the time in from the browser in a different
+                                 --format...?
     `time_out` datetime NOT NULL,
     `course_title` char(10) NOT NULL,
     `instructor_name` varchar(30),
-    `notes` text,
-    PRIMARY KEY (`instructor_email`));
+    `notes` text);
 
 --adding a new student
 INSERT INTO student (`student_id`, `first_name`, `last_name`, `email`, `is_tutor`)
-    VALUES ("123456789", "Zach", "Frehner", "zfrehner@mail.greenriver.edu", "1");
+    VALUES ("123456789", "Zach", "Frehner", "zfrehner@mail.greenriver.edu", "0");
+
+    INSERT INTO student (`student_id`, `first_name`, `last_name`, `email`, `is_tutor`)
+    VALUES ("987654321", "Zach", "Vonlichtenstein", "zvonlichtenstein@mail.greenriver.edu", "0");
+
+    INSERT INTO student (`student_id`, `first_name`, `last_name`, `email`, `is_tutor`)
+    VALUES ("222222222", "Elric", "Barkey", "ebarkey@mail.greenriver.edu", "0");
+
+    INSERT INTO student (`student_id`, `first_name`, `last_name`, `email`, `is_tutor`)
+    VALUES ("111111111", "Julia", "Evans", "jevans@mail.greenriver.edu", "1");
 
 --adding attendance
-INSERT INTO attendance (`instructor_id`, `date`, `time_in`, `time_out`, `course_title`, `instructor_name`, `notes`)
-    VALUES ('1','2020-05-28', '2020-05-28 16:08:12', '2020-05-28 16:25:12', 'IT 328', "T. Ostrander", "great class");
+INSERT INTO attendance (`instructor_email`, `student_id`, `date`, `time_in`, `time_out`, `course_title`, `instructor_name`, `notes`)
+    VALUES ('tostrander@mail.greenriver.edu', '987654321', '2020-05-28', '2020-05-28 16:08:12', '2020-05-28 16:25:12', 'IT 328', "T. Ostrander", "great class");
+
+    INSERT INTO attendance (`instructor_email`, `student_id`, `date`, `time_in`, `time_out`, `course_title`, `instructor_name`, `notes`)
+     VALUES ('tostrander@mail.greenriver.edu', '987654321', '2020-07-01', '2020-07-01 16:08:12', '2020-07-01 16:25:12', 'IT 328', "T. Ostrander", "good class");
+
+--adding instructors
+INSERT INTO instructor(`instructor_email`, `first_name`. `last_name`, `course_id`)
+    VALUES ('tostrander@mail.greenriver.edu', 'tina', 'ostrander', 'it328');
+
+INSERT INTO instructor(`instructor_email`, `first_name`. `last_name`, `course_id`)
+    VALUES ('jarcher@mail.greenriver.edu', 'josh', 'archer', 'it334');
+
+INSERT INTO instructor(`instructor_email`, `first_name`. `last_name`, `course_id`)
+    VALUES ('jarcher@mail.greenriver.edu', 'josh', 'archer', 'it220');
+
+INSERT INTO instructor(`instructor_email`, `first_name`. `last_name`, `course_id`)
+    VALUES ('khang@mail.greenriver.edu', 'ken', 'hang', 'it333');
 
 --view attendance
-SELECT * FROM attendance;
+SELECT * FROM attendance where student_id = "987654321";
 
 --edit student
 UPDATE student
 SET
     email = 'mary.patterson@greenriver.com'
 WHERE
-    student_id = 1111111;
+    student_id = 111111111;
 
 --view student
-SELECT * FROM student WHERE student_id = 1111111;
+SELECT * FROM student WHERE student_id = 123456789;
+
+--delete student
+DELETE FROM `student` WHERE student_id = 888888888;
