@@ -1,12 +1,27 @@
 <?php
 
-//$user = $_SERVER['user'];
-//$home = $_SERVER['home'];
-//require_once "/home/$user/config.php";
+//echo "<pre>";
+//var_dump($_SERVER);
+//echo "</pre>";
 
-require_once "/home/jevansgr/config.php";
-//require_once "/home/zfrehner/config.php";
-//require_once "/home/ebarkeyg_grc/config.php";
+//$home = $_SERVER['home'];
+//$user = $_SERVER['user'];
+//require_once "/$home/$user/config.php";
+
+if ($_SERVER['USER'] == 'jevansgr')
+{
+    require_once "/home/jevansgr/config.php";
+}
+
+else if ($_SERVER['USER'] == 'zfrehner')
+{
+    require_once "/home/zfrehner/config.php";
+}
+else
+{
+    require_once "/home/ebarkeyg_grc/config.php";
+}
+
 
 class Database
 {
