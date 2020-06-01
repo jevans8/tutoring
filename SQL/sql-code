@@ -33,9 +33,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
     `instructor_email` varchar(50) NOT NULL,
     `student_id` varchar(10) NOT NULL,
     `date` date NOT NULL,
-    `time_in` datetime NOT NULL, --instead of these being type date time we might need to make them a
-                                 --varchar because the user inputs the time in from the browser in a different
-                                 --format...?
+    `time_in` datetime NOT NULL,
     `time_out` datetime NOT NULL,
     `course_title` char(10) NOT NULL,
     `instructor_name` varchar(30),
