@@ -37,34 +37,48 @@ function search()
     let searchData = document.getElementById("search").value.toLowerCase();
     let flag = false;
 
+    //clear previous searches if any
     document.getElementById("studentInfo").innerHTML = "";
     document.getElementById("errorStudent").innerHTML = "";
 
     for (let i = 0; i < students.Student.length; i++)
     {
-        if(searchData === students.Student[i].Name.toLowerCase() || searchData === students.Student[i].Email.toLowerCase() || searchData === students.Student[i].SID.toLowerCase())
+        if(students.Student[i].Name.toLowerCase().includes(searchData))
         {
-            document.getElementById("studentInfo").innerHTML =
-                "Name : " + students.Student[i].Name + "<br>" +
+            document.getElementById("studentInfo").innerHTML +=
+                "<p>Name : " + students.Student[i].Name + "<br>" +
                 "SID : " + students.Student[i].SID + "<br>" +
-                "Email : " + students.Student[i].Email + "<br>" ;
+                "Email : " + students.Student[i].Email + "</p>" ;
 
             flag = true;
             document.getElementById("errorStudent").innerHTML = "";
         }
-        if (searchData === students.Student[i].First.toLowerCase())
-        {
-            document.getElementById("studentInfo").innerHTML +=
-                "<br>" +
-                "Name : " + students.Student[i].First + " " + students.Student[i].Last + "<br>" +
-                "SID : " + students.Student[i].SID + "<br>" +
-                "Email : " + students.Student[i].Email + "<br>" ;
-            flag = true;
-            document.getElementById("errorStudent").innerHTML = "";
-        }
+
+        // if(searchData === students.Student[i].Name.toLowerCase() || searchData === students.Student[i].Email.toLowerCase() || searchData === students.Student[i].SID.toLowerCase())
+        // {
+        //     document.getElementById("studentInfo").innerHTML =
+        //         "Name : " + students.Student[i].Name + "<br>" +
+        //         "SID : " + students.Student[i].SID + "<br>" +
+        //         "Email : " + students.Student[i].Email + "<br>" ;
+        //
+        //     flag = true;
+        //     document.getElementById("errorStudent").innerHTML = "";
+        // }
+
+        // if (searchData === students.Student[i].First.toLowerCase())
+        // {
+        //     document.getElementById("studentInfo").innerHTML +=
+        //         "<br>" +
+        //         "Name : " + students.Student[i].First + " " + students.Student[i].Last + "<br>" +
+        //         "SID : " + students.Student[i].SID + "<br>" +
+        //         "Email : " + students.Student[i].Email + "<br>" ;
+        //     flag = true;
+        //     document.getElementById("errorStudent").innerHTML = "";
+        // }
+
         if (flag === false)
         {
-            document.getElementById("errorStudent").innerHTML = "Student not found.";
+            document.getElementById("errorStudent").innerHTML = "No results found.";
         }
     }
 }

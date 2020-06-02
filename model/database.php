@@ -3,10 +3,9 @@
 //echo "<pre>";
 //var_dump($_SERVER);
 //echo "</pre>";
-
+//
 //$home = $_SERVER['home'];
-//$user = $_SERVER['user'];
-//require_once "/$home/$user/config.php";
+//require_once "$home/config.php";
 
 if ($_SERVER['USER'] == 'jevansgr')
 {
