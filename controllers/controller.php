@@ -143,18 +143,18 @@ class Controller
      */
     public function viewStudent()
     {
+        global $validator;
+
+        //get courses
+        $courses = $validator->getCourses();
+        $this->_f3->set('courses', $courses);
+
+        //get instructors
+        $instructors = $validator->getInstructors();
+        $this->_f3->set('instructors', $instructors);
+
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            global $validator;
-
-            //get courses
-            $courses = $validator->getCourses();
-            $this->_f3->set('courses', $courses);
-
-            //get instructors
-            $instructors = $validator->getInstructors();
-            $this->_f3->set('instructors', $instructors);
-
             //validate date
             if(empty($_POST['date']))
             {
