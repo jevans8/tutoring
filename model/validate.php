@@ -105,7 +105,7 @@ class Validate
      */
     function getInstructors()
     {
-        return array("Tina Ostrander", "Ken Hang", "Josh Archer");
+        return array("Tina Ostrander", "Ken Hang", "Josh Archer", "Susan Uland");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -25,7 +25,34 @@ class Controller
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            $this->_f3->reroute('search');
+            global $validator;
+
+            //validate email
+            if(empty($_POST['loginEmail']))
+            {
+                $this->_f3->set('errors["loginEmail"]', "Required field");
+            }
+            else if(!$validator->validEmail($_POST['loginEmail']))
+            {
+                $this->_f3->set('errors["loginEmail"]', "Please enter a valid email address");
+            }
+            //else if(){} //are they a tutor???
+
+            //validate password
+            if(empty($_POST['password']))
+            {
+                $this->_f3->set('errors["password"]', "Required field");
+            }
+            //else if(){} //is it the correct password??
+
+            //if valid data
+            if(empty($this->_f3->get('errors')))
+            {
+                $this->_f3->reroute('search');
+            }
+
+            //store variables in f3 hive to make form sticky
+            $this->_f3->set('loginEmail', $_POST['loginEmail']);
         }
 
         $view = new Template();

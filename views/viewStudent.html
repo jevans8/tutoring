@@ -56,7 +56,7 @@
 
                         <div class="form-group">
                             <label for="date">Date</label>
-                            <input type="text" class="form-control" id="date" name="date" aria-describedby="date" placeholder="MM/DD/YYYY" value="{{ @date }}">
+                            <input type="text" class="form-control" id="date" name="date" aria-describedby="date" placeholder="mm/dd/yyyy" onfocus="(this.type='date')" value="{{ @date }}">
                             <check if="isset(@errors['date'])">
                                 <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['date'] }}</div>
                             </check>
@@ -72,7 +72,12 @@
                         <!-- Time in -->
                         <div class="form-group">
                             <label for="timein">Time In</label>
-                            <input type="time" class="form-control" id="timein" name="timein" aria-describedby="time in" placeholder="" value="{{ @timein }}">
+                            <input type="time" class="form-control" id="timein" name="timein" aria-describedby="time in"
+                            <check if="@timein">
+                                <true>value="{{ @timein }}"</true>
+                                <false>value="00:00"</false>
+                            </check>>
+
                             <check if="isset(@errors['timein'])">
                                 <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['timein'] }}</div>
                             </check>
@@ -84,7 +89,12 @@
                         <!-- Time out -->
                         <div class="form-group">
                             <label for="timeout">Time Out</label>
-                            <input type="time" class="form-control" id="timeout" name="timeout" aria-describedby="time out" placeholder="" value="{{ @timeout }}">
+                            <input type="time" class="form-control" id="timeout" name="timeout" aria-describedby="time out"
+                            <check if="@timeout">
+                                <true>value="{{ @timeout }}"</true>
+                                <false>value="00:00"</false>
+                            </check>>
+
                             <check if="isset(@errors['timeout'])">
                                 <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['timeout'] }}</div>
                             </check>
@@ -112,7 +122,7 @@
                                     <false>
                                         <option selected></option>
                                         <repeat group="{{ @courses }}" value="{{ @course }}">
-                                            <option value="{{ @course }}" <check if="{{ @selectedCourse == @course }}">selected</check>>{{ strtoupper(@course) }}</option>
+                                            <option value="{{ @course }}">{{ strtoupper(@course) }}</option>
                                         </repeat>
                                     </false>
                                 </check>
