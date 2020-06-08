@@ -18,8 +18,8 @@ else if ($_SERVER['USER'] == 'zfrehner')
 }
 else
 {
-    //require_once "/home/zfrehner/config.php";
-    require_once "/home/ebarkeyg_grc/config.php";
+    require_once "/home/zfrehner/config.php";
+    //require_once "/home/ebarkeyg_grc/config.php";
 }
 
 

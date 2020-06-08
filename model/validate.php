@@ -9,6 +9,16 @@
 class Validate
 {
     /**
+     * Return a value indicating if password param is valid
+     * @param $pw
+     * @return bool
+     */
+    function validPassword($pw)
+    {
+        return $pw == "password";
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
      * Return a value indicating if name param is valid
      * Valid names do not contain anything except letters
      * @param $name

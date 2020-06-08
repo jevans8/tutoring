@@ -6,6 +6,7 @@
 class Controller
 {
     private $_f3; //router
+    private $_database;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -15,6 +16,7 @@ class Controller
     public function __construct($_f3)
     {
         $this->_f3 = $_f3;
+        $this->_database = new Database();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,10 +122,13 @@ class Controller
                 $this->_f3->set('errors["email"]', "Please enter a valid email address");
             }
 
+
+
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
                 //create a student object
+
                 $student = new Student();
                 $student->setFName($_POST['fname']);
                 $student->setLName($_POST['lname']);
@@ -134,8 +139,12 @@ class Controller
                 //store object in session array
                 $_SESSION['student'] = $student;
 
+               // var_dump($_POST);
+               // var_dump($_SESSION);
+
+
                 //adding the new student to the database
-                $GLOBALS['database']->addStudent($_SESSION['student']); 
+                $this->_database->addStudent($_SESSION['student']);
 
                 $this->_f3->reroute('viewStudent');
             }
