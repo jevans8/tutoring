@@ -10,12 +10,13 @@ class Student
 
     /**
      * Default constructor
-     * @param $fname student first name
-     * @param $lname student last name
-     * @param $sid student id
-     * @param $email student email
+     * @param string $fname student first name
+     * @param string $lname student last name
+     * @param string $sid student id
+     * @param string $email student email
+     * @param bool $isTutor
      */
-    public function __construct($fname, $lname, $sid, $email, $isTutor)
+    public function __construct($fname = "Zach", $lname = "Frehner", $sid = "555555555", $email = "zfrehn@gmail.com", $isTutor = false)
     {
         $this->_fname = $fname; //OR $this->setFName($name);
         $this->_lname = $lname;

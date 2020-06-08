@@ -123,6 +123,20 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
+                //create a student object
+                $student = new Student();
+                $student->setFName($_POST['fname']);
+                $student->setLName($_POST['lname']);
+                $student->setSid($_POST['sid']);
+                $student->setEmail($_POST['email']);
+                $student->isTutor();
+
+                //store object in session array
+                $_SESSION['student'] = $student;
+
+                //adding the new student to the database
+                $GLOBALS['database']->addStudent($_SESSION['student']); 
+
                 $this->_f3->reroute('viewStudent');
             }
 
@@ -200,6 +214,9 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
+                //viewing the the student from the database
+                $GLOBALS['database']->viewStudentInfo($_SESSION['student']);
+
                 $this->_f3->set('errors["none"]', "Attendance has been successfully logged");
             }
 
