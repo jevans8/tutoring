@@ -43,7 +43,10 @@ class Controller
             {
                 $this->_f3->set('errors["password"]', "Required field");
             }
-            //else if(){} //is it the correct password??
+            else if(!$validator->validPassword($_POST['password']))
+            {
+                $this->_f3->set('errors["password"]', "Incorrect password");
+            }
 
             //if valid data
             if(empty($this->_f3->get('errors')))
