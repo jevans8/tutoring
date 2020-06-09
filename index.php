@@ -26,7 +26,7 @@ $f3->route('GET|POST /', function($f3)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Student search route
-$f3->route('GET /search', function()
+$f3->route('GET|POST /search', function()
 {
     $GLOBALS['controller']->search();
 });
@@ -48,4 +48,3 @@ $f3->route('GET|POST /viewStudent', function()
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Run the framework (fat free)
 $f3->run();
-

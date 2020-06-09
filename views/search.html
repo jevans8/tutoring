@@ -16,13 +16,13 @@
 
             <h1 class="m-5">Student Search</h1>
 
-            <!--<form method="post" action="" class="bg-light p-5 mb-3">-->
-            <div class="form-group">
-                <label for="search">Search student by name</label>
-                <input type="text" class="form-control" id="search" aria-describedby="search" placeholder="">
-            </div>
-            <button type="button" id="button" class="btn btn-primary" onclick="search()">Search</button>
-            <!--</form>-->
+            <form method="post" action="">
+                <div class="form-group">
+                    <label for="search">Search student by name</label>
+                    <input type="text" class="form-control" id="search" aria-describedby="search" placeholder="">
+                </div>
+                <button type="submit" id="button" class="btn btn-primary" >Search</button><!--onclick="search()"-->
+            </form>
             <div>
                 <p id="studentInfo"></p>
                 <p id="errorStudent"></p>
@@ -37,6 +37,6 @@
     </div>
 
 </div>
-<script src="./json-search-student.js"></script>
+<!--<script src="./json-search-student.js"></script>-->
 </body>
 </html>
