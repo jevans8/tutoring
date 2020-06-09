@@ -70,12 +70,12 @@ class Controller
         $view = new Template();
         echo $view->render('views/search.html');
 
-
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
             $result = $GLOBALS['db']->displayResults();
 
-            //display it
-            echo "<div>";
+            //display results
+            echo "<div class='container'>";
             foreach ($result as $row) {
                 //place into html areas
                 echo "<p>" . "Name: " . $row['first_name'] . "  " . $row['last_name'] ."<br>"
@@ -138,13 +138,10 @@ class Controller
                 $this->_f3->set('errors["email"]', "Please enter a valid email address");
             }
 
-
-
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
                 //create a student object
-
                 $student = new Student();
                 $student->setFName($_POST['fname']);
                 $student->setLName($_POST['lname']);
@@ -155,9 +152,8 @@ class Controller
                 //store object in session array
                 $_SESSION['student'] = $student;
 
-                // sevar_dump($_POST);
+                // var_dump($_POST);
                 // var_dump($_SESSION);
-
 
                 //adding the new student to the database
                 $this->_database->addStudent($_SESSION['student']);
@@ -184,6 +180,16 @@ class Controller
     {
         global $validator;
 
+        //echo "<pre>";
+        //var_dump($_SESSION);
+        //echo "</pre>";
+
+        //get student object fields and save in hive to be displayed
+        $this->_f3->set('fname', $_SESSION['student']->getFName());
+        $this->_f3->set('lname', $_SESSION['student']->getLName());
+        $this->_f3->set('sid', $_SESSION['student']->getSid());
+        $this->_f3->set('email', $_SESSION['student']->getEmail());
+
         //get courses
         $courses = $validator->getCourses();
         $this->_f3->set('courses', $courses);
@@ -199,10 +205,6 @@ class Controller
             {
                 $this->_f3->set('errors["date"]', "Required field");
             }
-//            else if(!$validator->validDate($_POST['date']))
-//            {
-//                $this->_f3->set('errors["date"]', "Please enter a valid date");
-//            }
 
             //validate time in
             if(empty($_POST['timein']))
@@ -239,8 +241,8 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
-                //viewing the the student from the database
-                $this->_database->viewStudentInfo($_SESSION['student']);
+                //viewing the student from the database
+                //$this->_database->viewStudentInfo($_SESSION['student']);
 
                 $this->_f3->set('errors["none"]', "Attendance has been successfully logged");
             }
@@ -256,6 +258,10 @@ class Controller
 
         $view = new Template();
         echo $view->render('views/viewStudent.html');
+
+        session_unset();
+        $_SESSION = array();
+        session_destroy();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

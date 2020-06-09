@@ -24,19 +24,19 @@
 
                 <div class="form-group">
                     <label for="fname">First Name</label>
-                    <input type="text" class="form-control" id="fname" aria-describedby="first name" placeholder="" value="Jane" readonly>
+                    <input type="text" class="form-control" id="fname" aria-describedby="first name" placeholder="" value="{{ @fname }}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="lname">Last Name</label>
-                    <input type="text" class="form-control" id="lname" aria-describedby="last name" placeholder="" value="Doe" readonly>
+                    <input type="text" class="form-control" id="lname" aria-describedby="last name" placeholder="" value="{{ @lname }}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="sid">Student Identification (SID) Number</label>
-                    <input type="text" class="form-control" id="sid" aria-describedby="student id number" placeholder="" value="987654321" readonly>
+                    <input type="text" class="form-control" id="sid" aria-describedby="student id number" placeholder="" value="{{ @sid }}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="" value="janedoe@mail.greenriver.edu" readonly>
+                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="" value="{{ @email }}" readonly>
                 </div>
                 <!--<button type="submit" class="btn btn-primary btn-block">Edit</button>-->
             </form>

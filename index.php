@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 require_once('vendor/autoload.php');
 
 //Start a session (AFTER the autoload)
-//session_start();
+session_start();
 //DON'T FORGET TO ADD SESSION_DESTROY!!!!!!!!!!
 
 //Instantiate the framework (Base class)
