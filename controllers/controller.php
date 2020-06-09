@@ -155,13 +155,8 @@ class Controller
                 //store object in session array
                 $_SESSION['student'] = $student;
 
-<<<<<<< HEAD
-                // var_dump($_POST);
+                // sevar_dump($_POST);
                 // var_dump($_SESSION);
-=======
-               // var_dump($_POST);
-               // var_dump($_SESSION);
->>>>>>> 378df5d8d38fcc037e482f1fa761d83ffb28b796
 
 
                 //adding the new student to the database
