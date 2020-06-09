@@ -224,7 +224,7 @@ class Controller
             if(empty($this->_f3->get('errors')))
             {
                 //viewing the the student from the database
-                $GLOBALS['database']->viewStudentInfo($_SESSION['student']);
+                $this->_database->viewStudentInfo($_SESSION['student']);
 
                 $this->_f3->set('errors["none"]', "Attendance has been successfully logged");
             }
