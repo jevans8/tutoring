@@ -18,7 +18,6 @@ else if ($_SERVER['USER'] == 'zfrehner')
 }
 else
 {
-   // require_once "/home/zfrehner/config.php";
     require_once "/home/ebarkeyg/config.php";
 }
 
@@ -43,23 +42,23 @@ class Database
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function viewStudentInfo($sid)
-    {
-        //1. Define the query
-        $sql = "SELECT * FROM student WHERE student_id = $sid";
-
-        //2. Prepare the statement
-        $statement = $this->_dbh->prepare($sql);
-
-        //3. Bind the parameters
-        //SKIP
-
-        //4. Execute the statement
-        $statement->execute();
-
-        //5. Process the result
-        return $statement->fetchAll(PDO);
-    }
+//    function viewStudentInfo($sid)
+//    {
+//        //1. Define the query
+//        $sql = "SELECT * FROM student WHERE student_id = $sid";
+//
+//        //2. Prepare the statement
+//        $statement = $this->_dbh->prepare($sql);
+//
+//        //3. Bind the parameters
+//        //SKIP
+//
+//        //4. Execute the statement
+//        $statement->execute();
+//
+//        //5. Process the result
+//        return $statement->fetchAll(PDO);
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function addStudent($student)
@@ -85,34 +84,32 @@ class Database
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function addAttendance()
-    {
-        //1. Define the query
-        /*$sql = "INSERT INTO attendance (`instructor_email`, `student_id`, `date`, `time_in`, `time_out`, `course_title`, `instructor_name`, `notes`)
-    VALUES ('tostrander@mail.greenriver.edu', '987654321', '2020-05-28', '2020-05-28 16:08:12', '2020-05-28 16:25:12', 'IT 328', \"T. Ostrander\", \"great class\");";*/
-
-        //2. Prepare the statement
-        //3. Bind the parameters
-        //4. Execute the statement
-        //5. Process the result
-    }
+//    function addAttendance()
+//    {
+//        //1. Define the query
+//        /*$sql = "INSERT INTO attendance (`instructor_email`, `student_id`, `date`, `time_in`, `time_out`, `course_title`, `instructor_name`, `notes`)
+//    VALUES ('tostrander@mail.greenriver.edu', '987654321', '2020-05-28', '2020-05-28 16:08:12', '2020-05-28 16:25:12', 'IT 328', \"T. Ostrander\", \"great class\");";*/
+//
+//        //2. Prepare the statement
+//        //3. Bind the parameters
+//        //4. Execute the statement
+//        //5. Process the result
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function viewAttendance()
-    {
-        //1. Define the query
-        //2. Prepare the statement
-        //3. Bind the parameters
-        //4. Execute the statement
-        //5. Process the result
-    }
+//    function viewAttendance()
+//    {
+//        //1. Define the query
+//        //2. Prepare the statement
+//        //3. Bind the parameters
+//        //4. Execute the statement
+//        //5. Process the result
+//    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //print students
-
-
-    function viewStudent()
+    function displayResults()
     {
-        //Read fro database
+        //Read from database
         //1. Define the query
         $sql = "SELECT * FROM student ORDER BY first_name ASC";
 

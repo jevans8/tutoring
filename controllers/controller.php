@@ -72,7 +72,7 @@ class Controller
 
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $result = $GLOBALS['db']->viewStudent();
+            $result = $GLOBALS['db']->displayResults();
 
             //display it
             echo "<div>";
