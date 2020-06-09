@@ -18,8 +18,8 @@ else if ($_SERVER['USER'] == 'zfrehner')
 }
 else
 {
-    require_once "/home/zfrehner/config.php";
-    //require_once "/home/ebarkeyg_grc/config.php";
+   // require_once "/home/zfrehner/config.php";
+    require_once "/home/ebarkeyg/config.php";
 }
 
 
@@ -107,7 +107,27 @@ class Database
         //5. Process the result
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//print students
 
+
+    function viewStudent()
+    {
+        //Read fro database
+        //1. Define the query
+        $sql = "SELECT * FROM student ORDER BY first_name ASC";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters - SKIP
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the results
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
 
 

@@ -39,7 +39,6 @@ class Controller
                 $this->_f3->set('errors["loginEmail"]', "Please enter a valid email address");
             }
             //else if(){} //are they a tutor???
-
             //validate password
             if(empty($_POST['password']))
             {
@@ -70,6 +69,23 @@ class Controller
     {
         $view = new Template();
         echo $view->render('views/search.html');
+
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $result = $GLOBALS['db']->viewStudent();
+
+            //display it
+            echo "<div>";
+            foreach ($result as $row) {
+                //place into html areas
+                echo "<p>" . "Name: " . $row['first_name'] . "  " . $row['last_name'] ."<br>"
+                    . "SID: ". $row['student_id'] ."<br>".
+                    "Email: ". $row['email']
+                    ."<br>";
+            }
+            echo "</p>";
+            echo "</div>";
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -139,8 +155,8 @@ class Controller
                 //store object in session array
                 $_SESSION['student'] = $student;
 
-               // var_dump($_POST);
-               // var_dump($_SESSION);
+                // sevar_dump($_POST);
+                // var_dump($_SESSION);
 
 
                 //adding the new student to the database
