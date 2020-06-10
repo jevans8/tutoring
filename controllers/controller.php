@@ -92,6 +92,8 @@ class Controller
                 }
                 else
                 {
+                    echo "<div class='card-columns'>";
+
                     //display results
                     foreach ($result as $row)
                     {
@@ -101,24 +103,43 @@ class Controller
                         $email = $row['email'];
 
 
+//                        echo "
+//                        <form method='post' action=''>
+//                            <div class='form-group'>
+//                                $fname $lname
+//                                <input type='text' class='form-control-plaintext sr-only' id='fname' name='fname' value='$fname' readonly>
+//                                <input type='text' class='form-control-plaintext sr-only' id='lname' name='lname' value=$lname readonly>
+//                                <input type='text' class='form-control-plaintext sr-only' id='sid' name='sid' value=$sid readonly>
+//                                <input type='text' class='form-control-plaintext sr-only' id='email' name='email' value='$email' readonly>
+//                            </div>
+//                            <button type='submit' class='btn btn-primary' name='view'>View Student</button>
+//                        </form>
+//                        <br>
+//                        ";
+
                         echo "
-                        <form method='post' action=''>
-                            <div class='form-group'>
-                                <!--<label for='search'>First Name:</label>-->
-                                <input type='text' class='form-control-plaintext' id='fname' name='fname' value='$fname' readonly>
-                                <!--<label for='search'>Last Name:</label>-->
-                                <input type='text' class='form-control-plaintext' id='lname' name='lname' value=$lname readonly>
-                                <!--<label for='search'>SID:</label>-->
-                                <input type='text' class='form-control-plaintext' id='sid' name='sid' value=$sid readonly>
-                                <!--<label for='search'>Email:</label>-->
-                                <input type='text' class='form-control-plaintext' id='email' name='email' value='$email' readonly>
-                            </div>
-                            <button type='submit' class='btn btn-primary' name='view'>View Student</button>
-                        </form>
-                        <br>
+                        <div class=\"card m-3\">
+                            <form method='post' action=''>
+                                <div class=\"card-body\">
+                                    <h5 class=\"card-title\">$fname $lname</h5>
+                                        <div class='form-group'>
+                                            <input type='text' class='form-control-plaintext sr-only' id='fname' name='fname' value='$fname' readonly>
+                                            <input type='text' class='form-control-plaintext sr-only' id='lname' name='lname' value=$lname readonly>
+                                            <input type='text' class='form-control-plaintext sr-only' id='sid' name='sid' value=$sid readonly>
+                                            <input type='text' class='form-control-plaintext sr-only' id='email' name='email' value='$email' readonly>
+                                        </div>                              
+                                </div>
+                                <div class=\"card-footer\">
+                                    <!--<button type='submit' class='btn btn-primary stretched-link' name='view'>View Student</button>-->
+                                    <button type=\"submit\" class=\"btn btn-link stretched-link\" name=\"view\">View Student</button>
+                                </div>
+                            </form>
+                        </div>
                         ";
 
                     }
+
+                    echo "</div>";
                 }
 
             }
