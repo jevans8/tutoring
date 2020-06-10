@@ -17,34 +17,43 @@
     <div class="row justify-content-center">
         <div class="col-6">
 
+            <!-- Student profile form -->
             <form method="post" action="" class="bg-light p-5 mb-3">
 
                 <h3>Profile</h3>
                 <hr>
 
+                <!-- First name -->
                 <div class="form-group">
                     <label for="fname">First Name</label>
                     <input type="text" class="form-control" id="fname" aria-describedby="first name" placeholder="" value="{{ @fname }}" readonly>
                 </div>
+
+                <!-- Last name -->
                 <div class="form-group">
                     <label for="lname">Last Name</label>
                     <input type="text" class="form-control" id="lname" aria-describedby="last name" placeholder="" value="{{ @lname }}" readonly>
                 </div>
+
+                <!-- SID -->
                 <div class="form-group">
                     <label for="sid">Student Identification (SID) Number</label>
                     <input type="text" class="form-control" id="sid" aria-describedby="student id number" placeholder="" value="{{ @sid }}" readonly>
                 </div>
+
+                <!-- Email -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="" value="{{ @email }}" readonly>
                 </div>
-                <!--<button type="submit" class="btn btn-primary btn-block">Edit</button>-->
+
             </form>
 
         </div>
 
         <div class="col-6">
 
+            <!-- Add attendance form -->
             <form method="post" action="" class="bg-light p-5 mb-3">
 
                 <h3>Add Attendance</h3>

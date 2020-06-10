@@ -15,7 +15,7 @@ session_start();
 $f3 = Base::instance(); //Class::method()
 $controller = new Controller($f3); //controller object
 $validator = new Validate(); //validation object
-$db = new Database();
+$db = new Database(); //database object
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Default route

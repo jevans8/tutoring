@@ -1,12 +1,6 @@
 <?php
 
-//echo "<pre>";
-//var_dump($_SERVER);
-//echo "</pre>";
-//
-//$home = $_SERVER['home'];
-//require_once "$home/config.php";
-
+//connect to correct config file
 if ($_SERVER['USER'] == 'jevansgr')
 {
     require_once "/home/jevansgr/config.php";
@@ -21,12 +15,21 @@ else
     require_once "/home/ebarkeyg/config.php";
 }
 
-
+/**
+ * Class Database
+ * Contains the database methods
+ * @author Julia Evans, Elric Barkey, Zach Frehner
+ * @version 1.0
+ */
 class Database
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// fields
     private $_dbh;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// constructor
+    /**
+     * Database constructor
+     */
     function __construct()
     {
         //connect to database with PDO
@@ -41,31 +44,15 @@ class Database
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//    function viewStudentInfo($sid)
-//    {
-//        //1. Define the query
-//        $sql = "SELECT * FROM student WHERE student_id = $sid";
-//
-//        //2. Prepare the statement
-//        $statement = $this->_dbh->prepare($sql);
-//
-//        //3. Bind the parameters
-//        //SKIP
-//
-//        //4. Execute the statement
-//        $statement->execute();
-//
-//        //5. Process the result
-//        return $statement->fetchAll(PDO);
-//    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// add student
+    /**
+     * Adds a student to the database
+     * @param $student
+     */
     function addStudent($student)
     {
         //1. Define the query
-        $sql= "INSERT INTO student (student_id, first_name, last_name, email, is_tutor) 
-    VALUES (:student_id, :first_name, :last_name, :email, :is_tutor)";
+        $sql= "INSERT INTO student (student_id, first_name, last_name, email, is_tutor) VALUES (:student_id, :first_name, :last_name, :email, :is_tutor)";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -83,35 +70,15 @@ class Database
         //5. Process the result - SKIP
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//    function addAttendance()
-//    {
-//        //1. Define the query
-//        /*$sql = "INSERT INTO attendance (`instructor_email`, `student_id`, `date`, `time_in`, `time_out`, `course_title`, `instructor_name`, `notes`)
-//    VALUES ('tostrander@mail.greenriver.edu', '987654321', '2020-05-28', '2020-05-28 16:08:12', '2020-05-28 16:25:12', 'IT 328', \"T. Ostrander\", \"great class\");";*/
-//
-//        //2. Prepare the statement
-//        //3. Bind the parameters
-//        //4. Execute the statement
-//        //5. Process the result
-//    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//    function viewAttendance()
-//    {
-//        //1. Define the query
-//        //2. Prepare the statement
-//        //3. Bind the parameters
-//        //4. Execute the statement
-//        //5. Process the result
-//    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//print students
+    ///////////////////////////////////////////////////////////////////////////////////////////// display search results
+    /**
+     * Selects all the students from the database whose first/last name contain the input
+     * @param $input
+     * @return array
+     */
     function displayResults($input)
     {
-        //Read from database
         //1. Define the query
-        //$sql = "SELECT * FROM student ORDER BY first_name ASC";
         $sql = "SELECT * FROM student WHERE first_name LIKE '%$input%' OR last_name LIKE '%$input%' ORDER BY first_name ASC";
 
         //2. Prepare the statement
@@ -126,6 +93,7 @@ class Database
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 

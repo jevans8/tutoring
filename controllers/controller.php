@@ -2,15 +2,19 @@
 
 /**
  * Class Controller
+ * Contains the routing methods for the app
+ * @author Julia Evans, Zach Frehner, Elric Barkey
+ * @version 1.0
  */
 class Controller
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// fields
     private $_f3; //router
     private $_database;
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// constructor
     /**
-     * Controller constructor.
+     * Controller constructor
      * @param $_f3
      */
     public function __construct($_f3)
@@ -19,7 +23,7 @@ class Controller
         $this->_database = new Database();
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////// login
     /**
      * Process default route (login page)
      */
@@ -39,6 +43,7 @@ class Controller
                 $this->_f3->set('errors["loginEmail"]', "Please enter a valid email address");
             }
             //else if(){} //are they a tutor???
+
             //validate password
             if(empty($_POST['password']))
             {
@@ -61,7 +66,7 @@ class Controller
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// search
     /**
      * Process student search route
      */
@@ -72,19 +77,22 @@ class Controller
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
+            echo "<div class='container'>";
+
             if(!empty($_POST['search']))
             {
+                //search for student in database
                 $result = $GLOBALS['db']->displayResults($_POST['search']);
 
-                //display results
-                echo "<div class='container'>";
-
+                //no results
                 if(sizeof($result) == 0)
                 {
-                    echo "No results found";
+                    echo "<div class='small my-1 py-1 alert alert-danger' role='alert'>No results found</div>";
+                    echo "<a href='newStudent' class='btn btn-primary btn-block' role='button'>Add New Student</a>";
                 }
                 else
                 {
+                    //display results
                     foreach ($result as $row)
                     {
                         $fname = $row['first_name'];
@@ -92,86 +100,59 @@ class Controller
                         $sid = $row['student_id'];
                         $email = $row['email'];
 
-                        //place into html areas
-//                        echo "<p>" .
-//                            "Name: $fname $lname<br>" .
-//                            "SID: $sid<br>".
-//                            "Email: $email<br>".
-//                            "<a href='viewStudent' class='btn btn-primary' role='button' name='test'>View Student (TEST)</a>"
-//                        ;
 
-                echo "
-                <form method='post' action=''>
-                <div class='form-group'>
-                    <!--<label for='search'>First Name:</label>-->
-                    <input type='text' class='form-control-plaintext' id='fname' name='fname' value='$fname' readonly>
-                    <!--<label for='search'>Last Name:</label>-->
-                    <input type='text' class='form-control-plaintext' id='lname' name='lname' value=$lname readonly>
-                    <!--<label for='search'>SID:</label>-->
-                    <input type='text' class='form-control-plaintext' id='sid' name='sid' value=$sid readonly>
-                    <!--<label for='search'>Email:</label>-->
-                    <input type='text' class='form-control-plaintext' id='email' name='email' value='Email: $email' readonly>
-                </div>
-                <button type='submit' class='btn btn-primary' name='test'>View Student (TEST)</button>
-                </form>
-                <br>
-                ";
+                        echo "
+                        <form method='post' action=''>
+                            <div class='form-group'>
+                                <!--<label for='search'>First Name:</label>-->
+                                <input type='text' class='form-control-plaintext' id='fname' name='fname' value='$fname' readonly>
+                                <!--<label for='search'>Last Name:</label>-->
+                                <input type='text' class='form-control-plaintext' id='lname' name='lname' value=$lname readonly>
+                                <!--<label for='search'>SID:</label>-->
+                                <input type='text' class='form-control-plaintext' id='sid' name='sid' value=$sid readonly>
+                                <!--<label for='search'>Email:</label>-->
+                                <input type='text' class='form-control-plaintext' id='email' name='email' value='$email' readonly>
+                            </div>
+                            <button type='submit' class='btn btn-primary' name='view'>View Student</button>
+                        </form>
+                        <br>
+                        ";
 
                     }
                 }
 
-                echo "</p>";
-                echo "</div>";
-
-                //store in f3 hive to make form sticky NOT WORKING????
-                //$this->_f3->set('search', $_POST['search']);
-
             }
+            //no input
             else
             {
-                echo "<div class='container'>";
-                echo "Required field";
-                echo "</div>";
+                echo "<div class='small my-1 py-1 alert alert-warning' role='alert'>Required field</div>";
             }
 
+            echo "</div>";
 
-
-            if(isset($_POST['test']))
+            //if view student button has been clicked
+            if(isset($_POST['view']))
             {
                 //create a student object
                 $student = new Student();
-
-//                $student->setFName($row['first_name']);
-//                $student->setLName($row['last_name']);
-//                $student->setSid($row['student_id']);
-//                $student->setEmail($row['email']);
-
-            $student->setFName($_POST['fname']);
-            $student->setLName($_POST['lname']);
-            $student->setSid($_POST['sid']);
-            $student->setEmail($_POST['email']);
-
+                $student->setFName($_POST['fname']);
+                $student->setLName($_POST['lname']);
+                $student->setSid($_POST['sid']);
+                $student->setEmail($_POST['email']);
                 $student->isTutor();
 
                 //store object in session array
                 $_SESSION['student'] = $student;
 
                 //redirect
-                //$sid = $_POST['sid'];
-                //$this->_f3->reroute("viewStudent?sid=$sid");
                 $this->_f3->reroute("viewStudent");
             }
 
-
-
-
-
         }
-
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// new student
     /**
      * Process add new student route
      */
@@ -252,22 +233,13 @@ class Controller
         echo $view->render('views/newStudent.html');
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////// view student
     /**
      * Process view student route
      */
     public function viewStudent()
     {
         global $validator;
-
-        //echo "<pre>";
-        //var_dump($_SESSION);
-        //echo "</pre>";
-
-        // access params in a route
-        //$recipeId = $f3->get('PARAMS.recipeId');
-        $sid = $this->_f3->get('PARAMS.sid');
-        echo $sid;
 
         //get student object fields and save in hive to be displayed
         $this->_f3->set('fname', $_SESSION['student']->getFName());
@@ -283,6 +255,7 @@ class Controller
         $instructors = $validator->getInstructors();
         $this->_f3->set('instructors', $instructors);
 
+        //if form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             //validate date
@@ -326,9 +299,6 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
-                //viewing the student from the database
-                //$this->_database->viewStudentInfo($_SESSION['student']);
-
                 $this->_f3->set('errors["none"]', "Attendance has been successfully logged");
             }
 
@@ -345,11 +315,11 @@ class Controller
         echo $view->render('views/viewStudent.html');
 
         //destroy session
-        session_unset();
-        $_SESSION = array();
-        session_destroy();
+        //session_unset();
+        //$_SESSION = array();
+        //session_destroy();
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

@@ -1,13 +1,21 @@
 <?php
 
+/**
+ * Class Student
+ * Contains the methods for all student objects
+ * @author Julia Evans, Elric Barkey, Zach Frehner
+ * @version 1.0
+ */
 class Student
 {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// fields
     private $_fname;
     private $_lname;
     private $_sid;
     private $_email;
     private $_isTutor;
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// constructor
     /**
      * Default constructor
      * @param string $fname student first name
@@ -25,6 +33,7 @@ class Student
         $this->_isTutor = $isTutor;
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////// toString
     /**
      * toString() returns a String representation of a student object
      * @return String
@@ -38,7 +47,9 @@ class Student
         return $output;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////// first name
     /**
+     * getter for first name
      * @return string student first name
      */
     public function getFName()
@@ -47,6 +58,7 @@ class Student
     }
 
     /**
+     * setter for first name
      * @param string $name student first name
      */
     public function setFName($name)
@@ -54,7 +66,9 @@ class Student
         $this->_fname = $name;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////// last name
     /**
+     * getter for last name
      * @return string student last name
      */
     public function getLName()
@@ -63,6 +77,7 @@ class Student
     }
 
     /**
+     * setter for last name
      * @param string $name student last name
      */
     public function setLName($name)
@@ -70,7 +85,9 @@ class Student
         $this->_lname = $name;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////// sid
     /**
+     * getter for SID
      * @return string student SID
      */
     public function getSid()
@@ -79,6 +96,7 @@ class Student
     }
 
     /**
+     * setter for SID
      * @param string $sid student SID
      */
     public function setSid($sid)
@@ -86,7 +104,9 @@ class Student
         $this->_sid = $sid;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////// email
     /**
+     * getter for email
      * @return string student email
      */
     public function getEmail()
@@ -95,6 +115,7 @@ class Student
     }
 
     /**
+     * setter for email
      * @param string $email student email
      */
     public function setEmail($email)
@@ -102,7 +123,9 @@ class Student
         $this->_email = $email;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////// isTutor
     /**
+     * returns a value that indicates whether the student is a tutor
      * @return bool are they a tutor?
      */
     public function isTutor()

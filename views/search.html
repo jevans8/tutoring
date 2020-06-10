@@ -16,43 +16,23 @@
 
             <h1 class="m-5">Student Search</h1>
 
+            <!-- Search form -->
             <form method="post" action="">
                 <div class="form-group">
-                    <label for="search">Search student by name</label>
-                    <input type="text" class="form-control" id="search" name="search" value="{{ @search }}">
+                    <label for="search">Search student by first or last name</label>
+                    <input type="text" class="form-control" id="search" name="search">
                 </div>
-                <button type="submit" id="button" class="btn btn-primary" >Search</button><!--onclick="search()"-->
+                <button type="submit" id="button" class="btn btn-primary btn-block">Search</button><!--onclick="search()"-->
             </form>
-            <div>
-                <p id="studentInfo"></p>
-                <p id="errorStudent"></p>
-            </div>
-
-
-            <a href="newStudent" class="btn btn-primary btn-block" role="button">Add New Student</a>
-            <!--<a href="viewStudent" class="btn btn-primary btn-block" role="button">View Student</a>-->
-
-<!--            <a href="viewStudent" class="btn btn-primary btn-block" role="button" name="test">VIEW STUDENT (TEST)</a>-->
-
-<!--            <form method="post" action="">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="search">Name: </label>-->
-<!--                    <input type="text" class="form-control" id="name" placeholder="" readonly>-->
-<!--                    <label for="search">SID: </label>-->
-<!--                    <input type="text" class="form-control" id="sid" placeholder="" readonly>-->
-<!--                    <label for="search">Email: </label>-->
-<!--                    <input type="text" class="form-control" id="email" placeholder="" readonly>-->
-<!--                </div>-->
-<!--&lt;!&ndash;                <button type="submit" id="button" class="btn btn-primary" >Search</button>&ndash;&gt;-->
-<!--                <a href="viewStudent" class="btn btn-primary btn-block" role="button" name="test">TEST STUDENT</a>-->
-<!--            </form>-->
-
+<!--            <div>-->
+<!--                <p id="studentInfo"></p>-->
+<!--                <p id="errorStudent"></p>-->
+<!--            </div>-->
 
         </div>
 
     </div>
 
 </div>
-<!--<script src="./json-search-student.js"></script>-->
 </body>
 </html>
