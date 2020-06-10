@@ -72,24 +72,33 @@ class Controller
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            $result = $GLOBALS['db']->displayResults($_POST['search']);
-
-            //display results
-            echo "<div class='container'>";
-            foreach ($result as $row)
+            if(!empty($_POST['search']))
             {
-                $fname = $row['first_name'];
-                $lname = $row['last_name'];
-                $sid = $row['student_id'];
-                $email = $row['email'];
+                $result = $GLOBALS['db']->displayResults($_POST['search']);
 
-                //place into html areas
-                echo "<p>" .
-                    "Name: $fname $lname<br>" .
-                    "SID: $sid<br>".
-                    "Email: $email<br>".
-                    "<a href='viewStudent' class='btn btn-primary' role='button' name='test'>View Student (TEST)</a>"
-                ;
+                //display results
+                echo "<div class='container'>";
+
+                if(sizeof($result) == 0)
+                {
+                    echo "No results found";
+                }
+                else
+                {
+                    foreach ($result as $row)
+                    {
+                        $fname = $row['first_name'];
+                        $lname = $row['last_name'];
+                        $sid = $row['student_id'];
+                        $email = $row['email'];
+
+                        //place into html areas
+                        echo "<p>" .
+                            "Name: $fname $lname<br>" .
+                            "SID: $sid<br>".
+                            "Email: $email<br>".
+                            "<a href='viewStudent' class='btn btn-primary' role='button' name='test'>View Student (TEST)</a>"
+                        ;
 
 //                echo "
 //                <form method='post' action=''>
@@ -107,13 +116,23 @@ class Controller
 //                </form>
 //                <br>
 //                ";
+                    }
+                }
+
+                echo "</p>";
+                echo "</div>";
+
+                //store in f3 hive to make form sticky NOT WORKING????
+                //$this->_f3->set('search', $_POST['search']);
+
             }
-            echo "</p>";
-            echo "</div>";
+            else
+            {
+                echo "<div class='container'>";
+                echo "Required field";
+                echo "</div>";
+            }
 
-
-            //store in f3 hive to make form sticky NOT WORKING????
-            //$this->_f3->set('search', $_POST['search']);
         }
 
         if(isset($_POST['test']))
