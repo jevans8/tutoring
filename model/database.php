@@ -94,6 +94,39 @@ class Database
         return $result;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Checks if email is tutor email
+     * @param $email
+     * @return bool
+     */
+    function isTutor($email)
+    {
+        //1. Define the query
+        $sql = "SELECT * FROM `student` WHERE is_tutor = 1";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters - SKIP
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the results
+        $validTutors = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        //check if email is one of the valid tutors
+        foreach($validTutors as $tutor)
+        {
+            if($tutor['email'] == $email)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 

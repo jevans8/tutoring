@@ -44,16 +44,21 @@ class Controller
             {
                 $this->_f3->set('errors["loginEmail"]', "Please enter a valid email address");
             }
-            //else if(){} //are they a tutor???
-
-            //validate password
-            if(empty($_POST['password']))
+            else if(!$GLOBALS['db']->isTutor($_POST['loginEmail']))
             {
-                $this->_f3->set('errors["password"]', "Required field");
+                $this->_f3->set('errors["loginEmail"]', "Access denied");
             }
-            else if(!$validator->validPassword($_POST['password']))
+            else //good email
             {
-                $this->_f3->set('errors["password"]', "Incorrect password");
+                //validate password
+                if(empty($_POST['password']))
+                {
+                    $this->_f3->set('errors["password"]', "Required field");
+                }
+                else if(!$validator->validPassword($_POST['password']))
+                {
+                    $this->_f3->set('errors["password"]', "Incorrect password");
+                }
             }
 
             //if valid data
