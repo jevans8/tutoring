@@ -128,6 +128,53 @@ class Database
         return false;
     }
 
+    /**
+     * Return an array of valid instructors
+     * @return String[]
+     */
+    function getInstructors()
+    {
+        $sql = "SELECT * FROM instructor ORDER BY first_name ASC";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters - SKIP
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the result
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+        return $result;
+        //return array("Tina Ostrander", "Ken Hang", "Josh Archer", "Susan Uland");
+    }
+
+    /////////////////////////////////////////////////////////////////////
+    ///
+    /**
+     * Return an array of valid courses
+     * @return String[]
+     */
+    function getCourses()
+    {
+        $sql = "SELECT * FROM course ORDER BY title ASC";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters - SKIP
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Process the result
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
 
 }
 
