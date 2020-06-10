@@ -93,29 +93,30 @@ class Controller
                         $email = $row['email'];
 
                         //place into html areas
-                        echo "<p>" .
-                            "Name: $fname $lname<br>" .
-                            "SID: $sid<br>".
-                            "Email: $email<br>".
-                            "<a href='viewStudent' class='btn btn-primary' role='button' name='test'>View Student (TEST)</a>"
-                        ;
+//                        echo "<p>" .
+//                            "Name: $fname $lname<br>" .
+//                            "SID: $sid<br>".
+//                            "Email: $email<br>".
+//                            "<a href='viewStudent' class='btn btn-primary' role='button' name='test'>View Student (TEST)</a>"
+//                        ;
 
-//                echo "
-//                <form method='post' action=''>
-//                <div class='form-group'>
-//                    <label for='search'>First Name</label>
-//                    <input type='text' class='form-control' id='fname' name='fname' placeholder=$fname readonly>
-//                    <label for='search'>Last Name</label>
-//                    <input type='text' class='form-control' id='lname' name='lname' placeholder=$lname readonly>
-//                    <label for='search'>SID</label>
-//                    <input type='text' class='form-control' id='sid' name='sid' placeholder=$sid readonly>
-//                    <label for='search'>Email</label>
-//                    <input type='text' class='form-control' id='email' name='email' placeholder=$email readonly>
-//                </div>
-//                <button type='submit' class='btn btn-primary' name='test'>View Student (TEST)</button>
-//                </form>
-//                <br>
-//                ";
+                echo "
+                <form method='post' action=''>
+                <div class='form-group'>
+                    <!--<label for='search'>First Name:</label>-->
+                    <input type='text' class='form-control-plaintext' id='fname' name='fname' value='Name: $fname $lname' readonly>
+                    <!--<label for='search'>Last Name:</label>-->
+                    <!--<input type='text' class='form-control-plaintext' id='lname' name='lname' value=$lname readonly>-->
+                    <!--<label for='search'>SID:</label>-->
+                    <input type='text' class='form-control-plaintext' id='sid' name='sid' value=$sid readonly>
+                    <!--<label for='search'>Email:</label>-->
+                    <input type='text' class='form-control-plaintext' id='email' name='email' value='Email: $email' readonly>
+                </div>
+                <button type='submit' class='btn btn-primary' name='test'>View Student (TEST)</button>
+                </form>
+                <br>
+                ";
+
                     }
                 }
 
@@ -133,31 +134,40 @@ class Controller
                 echo "</div>";
             }
 
-        }
 
-        if(isset($_POST['test']))
-        {
-            //create a student object
-            $student = new Student();
 
-            $student->setFName($row['first_name']);
-            $student->setLName($row['last_name']);
-            $student->setSid($row['student_id']);
-            $student->setEmail($row['email']);
+            if(isset($_POST['test']))
+            {
+                //create a student object
+                $student = new Student();
+
+                $student->setFName($row['first_name']);
+                $student->setLName($row['last_name']);
+                $student->setSid($row['student_id']);
+                $student->setEmail($row['email']);
 
 //            $student->setFName($_POST['fname']);
 //            $student->setLName($_POST['lname']);
 //            $student->setSid($_POST['sid']);
 //            $student->setEmail($_POST['email']);
 
-            $student->isTutor();
+                $student->isTutor();
 
-            //store object in session array
-            $_SESSION['student'] = $student;
+                //store object in session array
+                $_SESSION['student'] = $student;
 
-            //redirect
-            $this->_f3->reroute("viewStudent?sid=$sid");
+                //redirect
+                $sid = $_POST['sid'];
+                $this->_f3->reroute("viewStudent?sid=$sid");
+            }
+
+
+
+
+
         }
+
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -252,10 +262,6 @@ class Controller
         //echo "<pre>";
         //var_dump($_SESSION);
         //echo "</pre>";
-
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
 
         //get student object fields and save in hive to be displayed
         $this->_f3->set('fname', $_SESSION['student']->getFName());
