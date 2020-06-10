@@ -87,8 +87,12 @@ class Controller
                 //no results
                 if(sizeof($result) == 0)
                 {
-                    echo "<div class='small my-1 py-1 alert alert-danger' role='alert'>No results found</div>";
-                    echo "<a href='newStudent' class='btn btn-primary btn-block' role='button'>Add New Student</a>";
+                    echo "<div class='row justify-content-center'>";
+                    echo "<div class='col-6'>";
+                    echo "<div class='small my-2 py-1 alert alert-danger' role='alert'>No results found</div>";
+                    echo "<a href='newStudent'>Add New Student</a>";
+                    echo "</div>";
+                    echo "</div>";
                 }
                 else
                 {
@@ -123,10 +127,10 @@ class Controller
                                 <div class=\"card-body\">
                                     <h5 class=\"card-title\">$fname $lname</h5>
                                         <div class='form-group'>
-                                            <input type='text' class='form-control-plaintext sr-only' id='fname' name='fname' value='$fname' readonly>
-                                            <input type='text' class='form-control-plaintext sr-only' id='lname' name='lname' value=$lname readonly>
-                                            <input type='text' class='form-control-plaintext sr-only' id='sid' name='sid' value=$sid readonly>
-                                            <input type='text' class='form-control-plaintext sr-only' id='email' name='email' value='$email' readonly>
+                                            <input type='text' class='form-control-plaintext sr-only' name='fname' value='$fname'>
+                                            <input type='text' class='form-control-plaintext sr-only' name='lname' value=$lname>
+                                            <input type='text' class='form-control-plaintext sr-only' name='sid' value=$sid>
+                                            <input type='text' class='form-control-plaintext sr-only' name='email' value='$email'>
                                         </div>                              
                                 </div>
                                 <div class=\"card-footer\">
@@ -146,7 +150,11 @@ class Controller
             //no input
             else
             {
-                echo "<div class='small my-1 py-1 alert alert-warning' role='alert'>Required field</div>";
+                echo "<div class='row justify-content-center'>";
+                echo "<div class='col-6'>";
+                echo "<div class='small my-3 py-1 alert alert-warning' role='alert'>Required field</div>";
+                echo "</div>";
+                echo "</div>";
             }
 
             echo "</div>";
