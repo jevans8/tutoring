@@ -29,6 +29,8 @@ class Controller
      */
     public function login()
     {
+        session_unset();
+
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             global $validator;
@@ -49,7 +51,10 @@ class Controller
             {
                 $this->_f3->set('errors["password"]', "Required field");
             }
-            //else if(){} //is it the correct password??
+            else if(!$validator->validPassword($_POST['password']))
+            {
+                $this->_f3->set('errors["password"]', "Incorrect password");
+            }
 
             //if valid data
             if(empty($this->_f3->get('errors')))
@@ -106,21 +111,6 @@ class Controller
                         $sid = $row['student_id'];
                         $email = $row['email'];
 
-
-//                        echo "
-//                        <form method='post' action=''>
-//                            <div class='form-group'>
-//                                $fname $lname
-//                                <input type='text' class='form-control-plaintext sr-only' id='fname' name='fname' value='$fname' readonly>
-//                                <input type='text' class='form-control-plaintext sr-only' id='lname' name='lname' value=$lname readonly>
-//                                <input type='text' class='form-control-plaintext sr-only' id='sid' name='sid' value=$sid readonly>
-//                                <input type='text' class='form-control-plaintext sr-only' id='email' name='email' value='$email' readonly>
-//                            </div>
-//                            <button type='submit' class='btn btn-primary' name='view'>View Student</button>
-//                        </form>
-//                        <br>
-//                        ";
-
                         echo "
                         <div class=\"card m-3\">
                             <form method='post' action=''>
@@ -143,7 +133,7 @@ class Controller
 
                     }
 
-                    echo "</div>";
+                    echo "</div>"; // container
                 }
 
             }
