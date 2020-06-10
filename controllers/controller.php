@@ -104,9 +104,9 @@ class Controller
                 <form method='post' action=''>
                 <div class='form-group'>
                     <!--<label for='search'>First Name:</label>-->
-                    <input type='text' class='form-control-plaintext' id='fname' name='fname' value='Name: $fname $lname' readonly>
+                    <input type='text' class='form-control-plaintext' id='fname' name='fname' value='$fname' readonly>
                     <!--<label for='search'>Last Name:</label>-->
-                    <!--<input type='text' class='form-control-plaintext' id='lname' name='lname' value=$lname readonly>-->
+                    <input type='text' class='form-control-plaintext' id='lname' name='lname' value=$lname readonly>
                     <!--<label for='search'>SID:</label>-->
                     <input type='text' class='form-control-plaintext' id='sid' name='sid' value=$sid readonly>
                     <!--<label for='search'>Email:</label>-->
@@ -141,15 +141,15 @@ class Controller
                 //create a student object
                 $student = new Student();
 
-                $student->setFName($row['first_name']);
-                $student->setLName($row['last_name']);
-                $student->setSid($row['student_id']);
-                $student->setEmail($row['email']);
+//                $student->setFName($row['first_name']);
+//                $student->setLName($row['last_name']);
+//                $student->setSid($row['student_id']);
+//                $student->setEmail($row['email']);
 
-//            $student->setFName($_POST['fname']);
-//            $student->setLName($_POST['lname']);
-//            $student->setSid($_POST['sid']);
-//            $student->setEmail($_POST['email']);
+            $student->setFName($_POST['fname']);
+            $student->setLName($_POST['lname']);
+            $student->setSid($_POST['sid']);
+            $student->setEmail($_POST['email']);
 
                 $student->isTutor();
 
@@ -157,8 +157,9 @@ class Controller
                 $_SESSION['student'] = $student;
 
                 //redirect
-                $sid = $_POST['sid'];
-                $this->_f3->reroute("viewStudent?sid=$sid");
+                //$sid = $_POST['sid'];
+                //$this->_f3->reroute("viewStudent?sid=$sid");
+                $this->_f3->reroute("viewStudent");
             }
 
 
@@ -262,6 +263,11 @@ class Controller
         //echo "<pre>";
         //var_dump($_SESSION);
         //echo "</pre>";
+
+        // access params in a route
+        //$recipeId = $f3->get('PARAMS.recipeId');
+        $sid = $this->_f3->get('PARAMS.sid');
+        echo $sid;
 
         //get student object fields and save in hive to be displayed
         $this->_f3->set('fname', $_SESSION['student']->getFName());
