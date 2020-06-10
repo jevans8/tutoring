@@ -72,7 +72,7 @@ class Controller
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            $result = $GLOBALS['db']->displayResults();
+            $result = $GLOBALS['db']->displayResults($_POST['search']);
 
             //display results
             echo "<div class='container'>";
@@ -110,6 +110,10 @@ class Controller
             }
             echo "</p>";
             echo "</div>";
+
+
+            //store in f3 hive to make form sticky NOT WORKING????
+            //$this->_f3->set('search', $_POST['search']);
         }
 
         if(isset($_POST['test']))

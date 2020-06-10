@@ -107,11 +107,12 @@ class Database
 //    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //print students
-    function displayResults()
+    function displayResults($input)
     {
         //Read from database
         //1. Define the query
-        $sql = "SELECT * FROM student ORDER BY first_name ASC";
+        //$sql = "SELECT * FROM student ORDER BY first_name ASC";
+        $sql = "SELECT * FROM student WHERE first_name LIKE '%$input%' OR last_name LIKE '%$input%' ORDER BY first_name ASC";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
