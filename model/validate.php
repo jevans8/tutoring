@@ -91,12 +91,11 @@ class Validate
      * Return an array of valid courses
      * @return String[]
      */
-    /*
     function getCourses()
     {
-        return array("IT 328", "IT 334", "ENGL 335");
+        return array("IT 328", "IT 334", "IT 333", "IT 220");
     }
-*/
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Return a value indicating if instructor is valid
@@ -114,34 +113,32 @@ class Validate
      * Return an array of valid instructors
      * @return String[]
      */
-
-    /*
     function getInstructors()
     {
-        $sql = "SELECT * FROM instructor ORDER BY first_name last_name ASC";
+//        $sql = "SELECT * FROM instructor ORDER BY first_name last_name ASC";
+//
+//        //2. Prepare the statement
+//        $statement = $this->_dbh->prepare($sql);
+//
+//        //3. Bind the parameters - SKIP
+//
+//        //4. Execute the statement
+//        $statement->execute();
+//
+//        //5. Process the results
+//        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+//
+//        $teachers = array();
+//
+//        for($i = 0; $i < sizeof($result); $i++)
+//        {
+//            $teachers[$i] = $result;
+//        }
+//        var_dump($teachers);
+//        return $teachers;
 
-        //2. Prepare the statement
-        $statement = $this->_dbh->prepare($sql);
-
-        //3. Bind the parameters - SKIP
-
-        //4. Execute the statement
-        $statement->execute();
-
-        //5. Process the results
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        $teachers = array();
-
-        for($i = 0; $i < sizeof($result); $i++)
-        {
-            $teachers[$i] = $result;
-        }
-        var_dump($teachers);
-        return $teachers;
-        //return array("Tina Ostrander", "Ken Hang", "Josh Archer", "Susan Uland");
+        return array("tina Ostrander", "ken Hang", "josh Archer", "susan Uland");
     }
-*/
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

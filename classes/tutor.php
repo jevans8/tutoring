@@ -18,6 +18,7 @@ class Tutor extends Student
      */
     public function __construct()
     {
+        parent::__construct();
         $this->_isTutor = true;
     }
 
@@ -25,39 +26,39 @@ class Tutor extends Student
     /**
      *
      */
-    public function viewStudentInfo()
-    {
-
-    }
+//    public function viewStudentInfo()
+//    {
+//
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * creates a new student object and adds them to the database
      */
-    public function addNewStudent()
-    {
-        $student = new Student($this->setFName(), $this->setLName(), $this->setSid(), $this->setEmail(), false);
-        $_SESSION['student'] = $student;
-        $_SESSION['student']->addStudent();
-    }
+//    public function addNewStudent()
+//    {
+//        $student = new Student($this->setFName(), $this->setLName(), $this->setSid(), $this->setEmail(), false);
+//        $_SESSION['student'] = $student;
+//        $_SESSION['student']->addStudent();
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      *
      * @return
      */
-    public function addAttendance()
-    {
-        return ;
-    }
+//    public function addAttendance()
+//    {
+//        return ;
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * @return
      */
-    public function viewAttendance()
-    {
-        return ;
-    }
+//    public function viewAttendance()
+//    {
+//        return ;
+//    }
 
 }

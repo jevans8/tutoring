@@ -229,13 +229,24 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
-                //create a student object
-                $student = new Student();
+                if(isset($_POST['isTutor']))
+                {
+                    //create a tutor object
+                    $student = new Tutor();
+                    $student->isTutor(); // == true
+                }
+                else
+                {
+                    //create a student object
+                    $student = new Student();
+                    $student->isTutor(); // == false
+                }
+
                 $student->setFName($_POST['fname']);
                 $student->setLName($_POST['lname']);
                 $student->setSid($_POST['sid']);
                 $student->setEmail($_POST['email']);
-                $student->isTutor();
+                //$student->isTutor();
 
                 //store student object in session array
                 $_SESSION['student'] = $student;
@@ -251,6 +262,7 @@ class Controller
             $this->_f3->set('lname', $_POST['lname']);
             $this->_f3->set('sid', $_POST['sid']);
             $this->_f3->set('email', $_POST['email']);
+            $this->_f3->set('isTutor', $_POST['isTutor']);
         }
 
         $view = new Template();
