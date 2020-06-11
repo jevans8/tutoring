@@ -233,20 +233,19 @@ class Controller
                 {
                     //create a tutor object
                     $student = new Tutor();
-                    $student->isTutor(); // == true
+                    $student->isTutor(true);
                 }
                 else
                 {
                     //create a student object
                     $student = new Student();
-                    $student->isTutor(); // == false
+                    $student->isTutor(false);
                 }
 
                 $student->setFName($_POST['fname']);
                 $student->setLName($_POST['lname']);
                 $student->setSid($_POST['sid']);
                 $student->setEmail($_POST['email']);
-                //$student->isTutor();
 
                 //store student object in session array
                 $_SESSION['student'] = $student;

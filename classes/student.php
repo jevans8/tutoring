@@ -124,13 +124,15 @@ class Student
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////// isTutor
+
     /**
-     * returns a value that indicates whether the student is a tutor
-     * @return bool are they a tutor?
+     * Sets a boolean value that determines if they are a tutor or not
+     * @param $isTutor
      */
-    public function isTutor()
+    public function isTutor($isTutor)
     {
-        return $this->_isTutor;
+        $this->_isTutor = $isTutor;
+        //return $this->_isTutor;
     }
 
 }
