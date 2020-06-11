@@ -3,7 +3,7 @@
 //connect to correct config file
 if ($_SERVER['USER'] == 'jevansgr')
 {
-    require_once "/home/jevansgr/config.php";
+    require_once "/home/ebarkeyg/config.php";
 }
 
 else if ($_SERVER['USER'] == 'zfrehner')
@@ -12,7 +12,7 @@ else if ($_SERVER['USER'] == 'zfrehner')
 }
 else
 {
-    require_once "/home/ebarkeyg/config.php";
+    require_once "/home/jevansgr/config.php";
 }
 
 /**
@@ -62,7 +62,6 @@ class Database
         $statement->bindParam(':first_name', $student->getFName());
         $statement->bindParam(':last_name', $student->getLName());
         $statement->bindParam(':email', $student->getEmail());
-        //$statement->bindParam(':is_tutor', $student->isTutor());
         $statement->bindParam(':is_tutor', $student->getTutorStatus());
 
         //4. Execute the statement
@@ -94,8 +93,7 @@ class Database
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////// isTutor
     /**
      * Checks if email is tutor email
      * @param $email
@@ -129,6 +127,7 @@ class Database
         return false;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// get instructors
     /**
      * Return an array of valid instructors
      * @return String[]
@@ -148,13 +147,11 @@ class Database
         //5. Process the result
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-
         return $result;
         //return array("Tina Ostrander", "Ken Hang", "Josh Archer", "Susan Uland");
     }
 
-    /////////////////////////////////////////////////////////////////////
-    ///
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// get courses
     /**
      * Return an array of valid courses
      * @return String[]

@@ -163,7 +163,6 @@ class Controller
                 $student->setLName($_POST['lname']);
                 $student->setSid($_POST['sid']);
                 $student->setEmail($_POST['email']);
-                //$student->isTutor();
 
                 //store object in session array
                 $_SESSION['student'] = $student;
@@ -233,13 +232,11 @@ class Controller
                 {
                     //create a tutor object
                     $student = new Tutor();
-                    //$student->setTutorStatus(true);
                 }
                 else
                 {
                     //create a student object
                     $student = new Student();
-                    //$student->setTutorStatus(false);
                 }
 
                 $student->setFName($_POST['fname']);
@@ -282,11 +279,11 @@ class Controller
         $this->_f3->set('sid', $_SESSION['student']->getSid());
         $this->_f3->set('email', $_SESSION['student']->getEmail());
 
-
         $courses = $this->_database->getCourses();
 
         $i = 0;
         $myArr = array();
+
         //loop over all my courses
         foreach ($courses as $course)
         {
@@ -298,9 +295,6 @@ class Controller
             $i++;
         }
 
-        //var_dump($courses);
-        //var_dump($myArr);
-
         $this->_f3->set('courses', $myArr);
 
         //get instructors
@@ -308,6 +302,7 @@ class Controller
 
         $k = 0;
         $arr = array();
+
         //loop over all my instructors
         foreach ($instructors as $teacher)
         {
@@ -318,9 +313,7 @@ class Controller
             $k++;
         }
 
-        //var_dump($arr);
         $this->_f3->set('instructors', $arr);
-
 
         //if form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST')

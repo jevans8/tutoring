@@ -13,6 +13,8 @@
             <h1 class="my-5">Tutor Login</h1>
 
             <form method="post" action="" class="bg-light p-5" novalidate>
+
+                <!-- Email -->
                 <div class="form-group">
                     <label for="loginEmail">Email</label>
                     <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="login email" placeholder="Enter email" value="{{ @loginEmail }}">
@@ -20,6 +22,8 @@
                         <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['loginEmail'] }}</div>
                     </check>
                 </div>
+
+                <!-- Password -->
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
@@ -27,7 +31,10 @@
                         <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['password'] }}</div>
                     </check>
                 </div>
+
+                <!-- Login button -->
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
+
             </form>
         </div>
     </div>

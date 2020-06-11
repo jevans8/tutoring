@@ -17,16 +17,16 @@ class Student
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////// constructor
     /**
-     * Default constructor
+     * Student constructor
      * @param string $fname student first name
      * @param string $lname student last name
      * @param string $sid student id
      * @param string $email student email
-     * @param bool $isTutor
+     * @param bool $isTutor are they a tutor?
      */
     public function __construct($fname = "Zach", $lname = "Frehner", $sid = "555555555", $email = "zfrehn@gmail.com", $isTutor = false)
     {
-        $this->_fname = $fname; //OR $this->setFName($name);
+        $this->_fname = $fname;
         $this->_lname = $lname;
         $this->_sid = $sid;
         $this->_email = $email;
@@ -140,7 +140,6 @@ class Student
     public function setTutorStatus($bool)
     {
         $this->_isTutor = $bool;
-        //return $this->_isTutor;
     }
 
 
