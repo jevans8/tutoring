@@ -163,7 +163,7 @@ class Controller
                 $student->setLName($_POST['lname']);
                 $student->setSid($_POST['sid']);
                 $student->setEmail($_POST['email']);
-                $student->isTutor();
+                //$student->isTutor();
 
                 //store object in session array
                 $_SESSION['student'] = $student;
