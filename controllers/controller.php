@@ -100,7 +100,7 @@ class Controller
                     echo "<div class='row justify-content-center'>";
                     echo "<div class='col-6'>";
                     echo "<div class='small my-2 py-1 alert alert-danger' role='alert'>No results found</div>";
-                    echo "<a href='newStudent'>Add New Student</a>";
+                    echo "<a href='newStudent' class='link'>Add New Student</a>";
                     echo "</div>";
                     echo "</div>";
                 }
@@ -117,7 +117,7 @@ class Controller
                         $email = $row['email'];
 
                         echo "
-                        <div class=\"card m-3\">
+                        <div class=\"card border-success m-3\">
                             <form method='post' action=''>
                                 <div class=\"card-body\">
                                     <h5 class=\"card-title\">$fname $lname</h5>

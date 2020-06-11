@@ -1,9 +1,20 @@
 .bg-success
 {
-    background-color: rgb(40,137,66);
+    background-color: rgb(40,137,66) !important;
 }
 
 .btn-primary
 {
-    background-color: rgb(40,137,66);
+    background-color: rgb(40,137,66) !important;
+    border-style: none !important;
+}
+
+.btn-primary:hover
+{
+    background-color: darkgreen !important;
+}
+
+.btn-link, .link
+{
+    color: rgb(40,137,66) !important;
 }
