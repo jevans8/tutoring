@@ -1,11 +1,10 @@
 <?php
 
 //connect to correct config file
-if ($_SERVER['USER'] == 'jevansgr')
+if ($_SERVER['USER'] == 'ebarkeyg')
 {
     require_once "/home/ebarkeyg/config.php";
 }
-
 else if ($_SERVER['USER'] == 'zfrehner')
 {
     require_once "/home/zfrehner/config.php";
