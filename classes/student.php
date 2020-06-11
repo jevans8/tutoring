@@ -124,15 +124,26 @@ class Student
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////// isTutor
+    /**
+     * getter for tutor status
+     * @return bool
+     */
+    public function getTutorStatus()
+    {
+        return $this->_isTutor;
+    }
 
     /**
-     * Sets a boolean value that determines if they are a tutor or not
-     * @param $isTutor
+     * setter for tutor status
+     * @param $bool
      */
-    public function isTutor($isTutor)
+    public function setTutorStatus($bool)
     {
-        $this->_isTutor = $isTutor;
+        $this->_isTutor = $bool;
         //return $this->_isTutor;
     }
+
+
+
 
 }

@@ -233,13 +233,13 @@ class Controller
                 {
                     //create a tutor object
                     $student = new Tutor();
-                    $student->isTutor(true);
+                    $student->setTutorStatus(true);
                 }
                 else
                 {
                     //create a student object
                     $student = new Student();
-                    $student->isTutor(false);
+                    $student->setTutorStatus(false);
                 }
 
                 $student->setFName($_POST['fname']);

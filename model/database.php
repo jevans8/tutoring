@@ -62,7 +62,8 @@ class Database
         $statement->bindParam(':first_name', $student->getFName());
         $statement->bindParam(':last_name', $student->getLName());
         $statement->bindParam(':email', $student->getEmail());
-        $statement->bindParam(':is_tutor', $student->isTutor());
+        //$statement->bindParam(':is_tutor', $student->isTutor());
+        $statement->bindParam(':is_tutor', $student->getTutorStatus());
 
         //4. Execute the statement
         $statement->execute();
