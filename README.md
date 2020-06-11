@@ -44,3 +44,6 @@ Code segments contain comments where needed and docblocks to explain methods. Co
 Lots of work went into this project. 
 
 11. GitHub repo includes readme file outlining how each requirement was met; UML diagram; and ER diagram
+
+
+![](images/FinalERD.PNG)
