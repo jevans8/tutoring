@@ -24,7 +24,7 @@
                     <label for="fname">First Name</label>
                     <input type="text" class="form-control" id="fname" name="fname" aria-describedby="first name" placeholder="" value="{{ @fname }}">
                     <check if="isset(@errors['fname'])">
-                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['fname'] }}</div>
+                        <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['fname'] }}</div>
                     </check>
                 </div>
 
@@ -33,7 +33,7 @@
                     <label for="lname">Last Name</label>
                     <input type="text" class="form-control" id="lname" name="lname" aria-describedby="last name" placeholder="" value="{{ @lname }}">
                     <check if="isset(@errors['lname'])">
-                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['lname'] }}</div>
+                        <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['lname'] }}</div>
                     </check>
                 </div>
 
@@ -42,7 +42,7 @@
                     <label for="sid">Student Identification (SID) Number</label>
                     <input type="text" class="form-control" id="sid" name="sid" aria-describedby="student id number" placeholder="" value="{{ @sid }}">
                     <check if="isset(@errors['sid'])">
-                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['sid'] }}</div>
+                        <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['sid'] }}</div>
                     </check>
                 </div>
 
@@ -51,7 +51,7 @@
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="" value="{{ @email }}">
                     <check if="isset(@errors['email'])">
-                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['email'] }}</div>
+                        <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['email'] }}</div>
                     </check>
                 </div>
 

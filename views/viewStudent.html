@@ -67,7 +67,7 @@
                             <label for="date">Date</label>
                             <input type="text" class="form-control" id="date" name="date" aria-describedby="date" placeholder="mm/dd/yyyy" onfocus="(this.type='date')" value="{{ @date }}">
                             <check if="isset(@errors['date'])">
-                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['date'] }}</div>
+                                <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['date'] }}</div>
                             </check>
                         </div>
 
@@ -88,7 +88,7 @@
                             </check>>
 
                             <check if="isset(@errors['timein'])">
-                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['timein'] }}</div>
+                                <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['timein'] }}</div>
                             </check>
                         </div>
 
@@ -105,7 +105,7 @@
                             </check>>
 
                             <check if="isset(@errors['timeout'])">
-                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['timeout'] }}</div>
+                                <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['timeout'] }}</div>
                             </check>
                         </div>
 
@@ -118,7 +118,7 @@
 
                         <!-- Courses -->
                         <div class="form-group">
-                            <label for="course">Courses</label>
+                            <label for="course">Course</label>
                             <select class="custom-select" id="course" name="course">
 
                                 <check if="isset({{ @selectedCourse }})">
@@ -140,7 +140,7 @@
 
                             <!-- Error msg -->
                             <check if="isset(@errors['course'])">
-                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['course'] }}</div>
+                                <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['course'] }}</div>
                             </check>
 
                         </div>
@@ -172,7 +172,7 @@
 
                             <!-- Error msg -->
                             <check if="isset(@errors['instructor'])">
-                                <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['instructor'] }}</div>
+                                <div class="small my-1 py-1 alert alert-dark" role="alert">{{ @errors['instructor'] }}</div>
                             </check>
 
                         </div>
