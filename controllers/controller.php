@@ -98,7 +98,7 @@ class Controller
                 if(sizeof($result) == 0)
                 {
                     echo "<div class='row justify-content-center'>";
-                    echo "<div class='col-6'>";
+                    echo "<div class='col-md-6'>";
                     echo "<div class='small my-2 py-1 alert alert-danger' role='alert'>No results found</div>";
                     echo "<a href='newStudent' class='link'>Add New Student</a>";
                     echo "</div>";
@@ -146,7 +146,7 @@ class Controller
             else
             {
                 echo "<div class='row justify-content-center'>";
-                echo "<div class='col-6'>";
+                echo "<div class='col-md-6'>";
                 echo "<div class='small my-3 py-1 alert alert-warning' role='alert'>Required field</div>";
                 echo "</div>";
                 echo "</div>";
