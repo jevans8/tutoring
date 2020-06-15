@@ -47,3 +47,5 @@ Lots of work went into this project.
 
 
 ![](images/FinalERD.PNG)
+
+![](images/UML-diagram.PNG)
